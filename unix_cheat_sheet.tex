@@ -1,0 +1,331 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{geometry}
+\usepackage{courier}
+\geometry{
+  top=1.0in,            % <-- you want to adjust this
+  inner=0.5in,
+  outer=0.5in,
+  bottom=1.0in,
+  headheight=4ex,       % <-- and this
+  headsep=3ex,          % <-- and this
+}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\addtolength{\parskip}{\baselineskip}  
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\pagestyle{fancy}
+\newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{\leftmark}
+\chead{}
+\rhead{\rightmark}
+\lfoot{}
+\cfoot{Page \thepage}
+\rfoot{}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+\begin{document}
+
+\section{Useful Unix Utilities}
+
+\begin{enumerate}
+
+\item{\texttt{man}}  
+     \subitem{Displays manuals (aka \texttt{man} pages). Press \texttt{Q} to exit a \texttt{man} page.}
+     \subitem{Type \texttt{/<text>} to search for text. Press \texttt{N} to go to next match, \texttt{shift-N} to go to previous match.}
+     \subitem{Usage: \texttt{man ls};\texttt{ man cp};\texttt{ man man}}
+
+\item{\texttt{pwd}}  
+     \subitem{Print current directory}
+     \subitem{Usage: \texttt{pwd}}
+
+\item{\texttt{echo}} 
+     \subitem{Print a line to the console.}
+     \subitem{Usage: \texttt{echo `hello, world'}}
+
+\item{\texttt{ls}}   
+     \subitem{List files in a directory (current directory by default)}
+     \subitem{Useful Options: \texttt{-r} (recursive), \texttt{-a} (hidden files), \texttt{-l} (verbose)}
+     \subitem{Usage: \texttt{ls};\texttt{ ls -al};\texttt{ ls -al \urlwofont{~/}}}
+
+\item{\texttt{cd}}   
+     \subitem{Change directory}
+     \subitem{Usage: \texttt{cd /};\texttt{ cd ..};\texttt{ cd \urlwofont{~/}}}
+
+\item{\texttt{cp}}   
+     \subitem{Copy file (or directory), overwrites destination if it exists}
+     \subitem{Useful Options: \texttt{-R}}
+     \subitem{Usage: \texttt{cp a.txt b.txt};\texttt{ cp -R folder otherfolder}}
+
+\item{\texttt{mv}}   
+     \subitem{Move files}
+     \subitem{Warning: overwrites destination if it exists}
+     \subitem{Usage: \texttt{mv a.txt b.txt};\texttt{ mv a.txt folder/b.txt};\texttt{ mv a.txt folder}}
+
+\item{\texttt{rm}}   
+     \subitem{Delete files}
+     \subitem{Useful options: \texttt{-r} (recursive)}
+     \subitem{Usage: \texttt{rm a.txt};\texttt{ rm -r folder}}
+     \subitem{Trivia: Never run \texttt{rm -rf /}. It will delete everything.}
+
+\item{\texttt{touch}} 
+     \subitem{Make an empty file. If file exists, updates last modified date useful to trigger watchers like guard.}
+     \subitem{Useful options: \texttt{-r} (recursive)}
+     \subitem{Usage: \texttt{touch -r *}}
+
+\item{\texttt{mkdir}} 
+     \subitem{Make an empty directory}
+     \subitem{Usage: \texttt{mkdir folder}}
+
+\item{\texttt{rmdir}} 
+     \subitem{Delete a directory. It has to be empty}
+     \subitem{Usage: \texttt{rmdir folder}}
+
+\item{\texttt{grep}}  
+     \subitem{Find all lines in file matching some regular expression.}
+     \subitem{Useful options: \texttt{-I} (ignore binary files like images), \texttt{-i} (ignore case), \texttt{-r} (recursive), \texttt{-v} (invert match)}
+     \subitem{Usage: \texttt{grep pattern *};\texttt{ grep -iIr nginx puppet/*}}
+
+\item{\texttt{find}}  
+     \subitem{Find all files with some property.}
+     \subitem{Useful options: \texttt{-name}}
+     \subitem{Usage: \texttt{find . -name "*s.coffee"}}
+
+\item{\texttt{curl}}  
+     \subitem{Make HTTP requests from console.}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage:}
+       \subsubitem{\texttt{curl www.google.com};\texttt{ curl localhost:8000}}
+       \subsubitem{\texttt{curl localhost:8000/api/messages -d "message=hello"}}
+       \subsubitem{\texttt{curl localhost:8000/api/messages/1 -d "message=world" -X "PUT"}}
+
+\item{\texttt{ping}} 
+     \subitem{TODO}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\item{\texttt{kill}} 
+     \subitem{TODO}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\item{\texttt{ps}} 
+     \subitem{TODO}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\item{\texttt{chmod}} 
+     \subitem{TODO}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\item{\texttt{chown}} 
+     \subitem{TODO}
+     \subitem{See also, \texttt{chgrp}.}
+     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\item{\texttt{sudo}}  
+     \subitem{Do action as another user (\texttt{root} by default)}
+     \subitem{Useful options: \texttt{-u <username>}}
+     \subitem{Usage: \texttt{sudo touch a.txt};\texttt{ sudo rm a.txt}}
+
+\item{\texttt{nano}}  
+     \subitem{Simple console-based text editor}
+     \subitem{Usage: \texttt{nano a.txt}}
+
+\item{\texttt{tail}}  
+     \subitem{Display last few lines of a file. Useful for watching log files}
+     \subitem{Useful options: \texttt{-f} (wait for more data)}
+     \subitem{Usage: \texttt{tail a.txt};\texttt{ tail -f /var/log/upstart/guard.log}}
+
+\item{\texttt{head}}  
+     \subitem{Display top few lines of a file. Not as useful as \texttt{tail}.}
+
+\item{\texttt{cat}}   
+     \subitem{Print out contents of a file to the console}
+     \subitem{Useful options: \texttt{-n} (enumerate lines), \texttt{-s} (compress blank lines)}
+     \subitem{Usage: \texttt{cat a.txt};\texttt{ cat -sn a.txt}}
+
+\item{\texttt{less}}  
+     \subitem{View the contents of a file. Press \texttt{Q} to exit.}
+     \subitem{Commands similar to \texttt{man}.}
+     \subitem{Usage: \texttt{less a.txt};\texttt{ cat -n a.txt | less}}
+
+\item{\texttt{diff}}  
+     \subitem{Compare two files}
+     \subitem{Useful options: \texttt{-i} (ignore case), \texttt{-b} (ignore blank lines)}
+     \subitem{Usage: \texttt{diff a.txt b.txt};\texttt{ diff {a,b}.txt}}
+
+\item{\texttt{wc}}    
+     \subitem{Word count tool; useful for counting lines of code and things.}
+     \subitem{Useful options: \texttt{-c} (characters), \texttt{-w} (words), \texttt{-l} (lines)}
+     \subitem{Usage: \texttt{wc -l a.txt}}
+
+\item{\texttt{ssh}}   
+     \subitem{Log into a remote computer or virtual machine}
+     \subitem{Usage: \texttt{ssh username@hostname};\texttt{ ssh payton@kalibrr.com}}
+
+\item{\texttt{scp}}   
+     \subitem{It’s like \texttt{cp}, but between multiple computers.}
+     \subitem{Usage: \texttt{scp a.txt payton@kalibrr.com:/home/payton/a.txt}}
+
+\item{\texttt{apt-get}} 
+     \subitem{Package manager for Ubuntu (and other Debian-based distros)}
+     \subitem{Installs and removes things.}
+     \subitem{Useful commands:}
+          \subsubitem{\texttt{install} - Installs a package}
+          \subsubitem{\texttt{remove}  - Removes a package}
+          \subsubitem{\texttt{purge}   - Removes a package and clears configuration}
+          \subsubitem{\texttt{update}  - Updates the cached package listing}
+     \subitem{Usage: \texttt{sudo apt-get install vim}}
+          \subsubitem{\texttt{sudo apt-get purge vim}}
+          \subsubitem{\texttt{sudo apt-get update}}
+
+\item{\texttt{apt-cache}} 
+     \subitem{Tool for searching for packages (Debian-based only)}
+     \subitem{Useful commands:}
+          \subsubitem{\texttt{search} - search for package with substring}
+          \subsubitem{\texttt{show}   - show detailed information about a package}
+     \subitem{Usage: \texttt{apt-cache search vi | grep vim};\texttt{ apt-cache show vim}}
+
+\item{\texttt{initctl}}   
+     \subitem{Tool for managing services (Ubuntu only)}
+     \subitem{Useful commands:}
+           \subsubitem{\texttt{start} - starts a service}
+           \subsubitem{\texttt{stop}  - stops a service}
+     \subitem{Usage: \texttt{sudo initctl start guard};\texttt{ sudo initctl stop nginx}}
+
+\item{\texttt{service}}   
+     \subitem{Another tool for managing services (Ubuntu only)}
+     \subitem{Usage: \texttt{sudo service guard start};\texttt{ sudo service nginx stop}}
+
+\item{\texttt{open}} 
+     \subitem{Opens a file with default program (Mac only)}
+     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+
+\end{enumerate}
+
+\newpage
+\section{Unix Command Line 101}
+\subsection{Directory Naming}
+
+If it starts with \texttt{/}, it's an absolute path that starts from the root directory ( \texttt{/} ).
+
+If it starts with \texttt{\urlwofont{~/}}, it's an absolute path that starts from the user's home directory (\texttt{/Users/username/} on Mac; \texttt{/home/username/} on Linux).
+
+Everything else is a path relative to the current directory (see \texttt{pwd}).
+
+`\texttt{..}' means one folder up.
+
+`\texttt{.}' means current folder.
+
+\subsubsection{Examples}
+\begin{enumerate}
+\item \texttt{cd ..} brings you one folder up.
+\item \texttt{cd example/..} is the same as \texttt{cd .}
+\end{enumerate}
+
+\subsection{Pipes and Redirection}
+\begin{enumerate}
+
+\item{\texttt{|}}
+  \subitem{Pass the output from a command to another command}
+  \subitem{Usage:}
+     \subsubitem{\texttt{ls -R | grep ".*\textbackslash.txt"} (Find all files that end with \texttt{.txt})}
+     \subsubitem{\texttt{cat a.txt | grep -v "\textasciicircum\$" | less} (Read file without the empty lines)}
+  \subitem{This is one of the more powerful features of bash.  Be sure to use it.}
+
+\item{\texttt{<}}
+  \subitem{Use a file as input.}
+  \subitem{Example: \texttt{java Hello < input.txt} (Run a Java program entitled Hello with \texttt{input.txt} as input.)}
+
+\item{\texttt{>}}
+  \subitem{Save output to a file. Overwrites current file.}
+  \subitem{Example: \texttt{java Hello < input.txt > output.txt}}
+
+\item{\texttt{>>}}
+  \subitem{Append output to a file.}
+  \subitem{Example: \texttt{java Hello < input.txt >> output.txt  }}
+
+\item{\texttt{2>}}
+  \subitem{Save error output to a file. Overwrites current file.}
+
+\item{\texttt{2>>}}
+  \subitem{Append error output to a file.}
+\end{enumerate}
+
+\subsection{Globbing}
+You can pass a ``glob'' to many commands. A glob is a pattern that's much simpler than regular expressions but is useful nonetheless.
+
+\texttt{*} matches any number of characters including the empty string
+
+\texttt{?} matches exactly one character
+
+\subsubsection{Examples}
+\begin{enumerate}
+\item \texttt{rm -r *.coffee} (remove all files that end in \texttt{.coffee})
+\item \texttt{rm -r ???} (remove files and directories whose names are three characters long)
+\end{enumerate}
+
+\subsection{Curly Braces}
+Using curly braces (\texttt{\{\}}) in a command causes it to expand the command.
+
+\subsubsection{Examples}
+\begin{enumerate}
+\item \texttt{diff \{a,b\}.txt} is equivalent to \texttt{diff a.txt b.txt}
+\item \texttt{touch \{a,b,c,d\}.\{c,py,java\}} - \texttt{touch}es 12 files
+\item \texttt{diff file\{1,2\}.txt} is equivalent to \texttt{diff file1.txt file2.txt}
+\end{enumerate}
+
+\newpage
+\section{Advanced Stuff}
+\subsection{More Unix Commands}
+\begin{enumerate}
+
+\item{\texttt{vim}}
+  \subitem{Advanced console-based text editor}
+  \subitem{Learn on your own. It’s very complicated.}
+
+\item{\texttt{emacs}}
+  \subitem{Even more complicated and powerful text editor.}
+  \subitem{We heard it can even play music.}
+
+\item{\texttt{tar}}
+  \subitem{Super duper unzipper. Bahala na kayo sa options.}
+\end{enumerate}
+
+\subsection{More on Bash}
+Variables:
+
+To set variables:
+\texttt{VARIABLE="hello world"} (No spaces)
+
+To use variables:
+\texttt{echo \$VARIABLE}
+
+Note: Variables are case-sensitive.
+
+For more advanced bash scripting, check the Internet.
+
+
+\end{document} 
+
+​
