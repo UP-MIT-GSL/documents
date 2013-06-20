@@ -86,7 +86,8 @@
      \subitem{Trivia: Never run \texttt{rm -rf /}. It will delete everything.}
 
 \item{\texttt{touch}} 
-     \subitem{Make an empty file. If file exists, updates last modified date useful to trigger watchers like guard.}
+     \subitem{Make an empty file. If file exists, updates last modified date.}
+     \subitem{Useful to trigger watchers like guard.}
      \subitem{Useful options: \texttt{-r} (recursive)}
      \subitem{Usage: \texttt{touch -r *}}
 
@@ -112,7 +113,8 @@
      \subitem{Make HTTP requests from console.}
      \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
      \subitem{Usage:}
-       \subsubitem{\texttt{curl www.google.com};\texttt{ curl localhost:8000}}
+       \subsubitem{\texttt{curl www.google.com}}
+       \subsubitem{\texttt{curl localhost:8000}}
        \subsubitem{\texttt{curl localhost:8000/api/messages -d "message=hello"}}
        \subsubitem{\texttt{curl localhost:8000/api/messages/1 -d "message=world" -X "PUT"}}
 
@@ -184,7 +186,7 @@
      \subitem{Usage: \texttt{ssh username@hostname};\texttt{ ssh payton@kalibrr.com}}
 
 \item{\texttt{scp}}   
-     \subitem{It’s like \texttt{cp}, but between multiple computers.}
+     \subitem{It's like \texttt{cp}, but between multiple computers.}
      \subitem{Usage: \texttt{scp a.txt payton@kalibrr.com:/home/payton/a.txt}}
 
 \item{\texttt{apt-get}} 
@@ -302,7 +304,7 @@ Using curly braces (\texttt{\{\}}) in a command causes it to expand the command.
 
 \item{\texttt{vim}}
   \subitem{Advanced console-based text editor}
-  \subitem{Learn on your own. It’s very complicated.}
+  \subitem{Learn on your own. It's very complicated.}
 
 \item{\texttt{emacs}}
   \subitem{Even more complicated and powerful text editor.}
