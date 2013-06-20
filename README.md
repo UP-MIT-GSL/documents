@@ -1,4 +1,4 @@
-documents
+UP MIT GSL Documents
 =========
 
-Handouts for class
+LaTeX handouts for class.
