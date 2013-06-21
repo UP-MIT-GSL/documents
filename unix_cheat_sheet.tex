@@ -137,16 +137,29 @@
      \subitem{Terminates a process. Expects a process ID.}
      \subitem{Useful options: \texttt{-9} to absolutely terminate a process. The process cannot stop it.}
      \subitem{Note: In order to see the process IDs, use \texttt{ps}.}
-     \subitem{Usage: \texttt{kill -9 12345}}
+     \subitem{Usage: \texttt{kill 1234}; \texttt{kill -9 12345}}
 
 \item{\texttt{chmod}} 
      \subitem{Changes file permissions.}
-     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
-     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+     \subitem{Use the command as follows: \texttt{chmod [A][B][C]}, where \texttt{[A]} is one of \texttt{ugo}, \texttt{[B]} is one of \texttt{+-}, and \texttt{[C]} is one of \texttt{rwx}.}
+     \subitem{There are other ways to use the command (see \texttt{man chmod}), but these ones are the most useful.}
+     \subitem{Values of \texttt{[A]}:}
+        \subsubitem{\texttt{u} (User)}
+        \subsubitem{\texttt{g} (Group)}
+        \subsubitem{\texttt{o} (Others)}
+     \subitem{Values of \texttt{[B]}:}
+        \subsubitem{\texttt{+} (Add)}
+        \subsubitem{\texttt{-} (Remove)}
+     \subitem{Values of \texttt{[C]}:}
+        \subsubitem{\texttt{r} (Read permissions)}
+        \subsubitem{\texttt{w} (Write permissions)}
+        \subsubitem{\texttt{x} (Executable permissions)}
+     \subitem{Usage:}
+        \subsubitem{\texttt{chmod u+x myscript.sh}}
+        \subsubitem{\texttt{chmod o-w myfile.txt}}
 
 \item{\texttt{chown}} 
-     \subitem{TODO}
-     \subitem{See also, \texttt{chgrp}.}
+     \subitem{Change file ownership.}
      \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
      \subitem{Usage: \texttt{open a.png} (opens with Preview)}
 
@@ -345,3 +358,4 @@ For more advanced bash scripting, check the Internet.
 
 \end{document} 
 
+​
