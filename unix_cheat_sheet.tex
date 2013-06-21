@@ -94,7 +94,7 @@
      \subitem{Make an empty file. If file exists, updates last modified date.}
      \subitem{Useful to trigger watchers like guard.}
      \subitem{Useful options: \texttt{-r} (recursive)}
-     \subitem{Usage: \texttt{touch -r *}}
+     \subitem{Usage: \texttt{touch newfile.txt}; \texttt{touch -r *}}
 
 \item{\texttt{mkdir}} 
      \subitem{Make an empty directory}
@@ -130,30 +130,22 @@
 \item{\texttt{ps}} 
      \subitem{A way to list all processes and their respective process IDs}
      \subitem{Useful options: Use it with \texttt{-ef}}
-     \subitem{Note: This is more effective when used with \texttt{grep} since you can now filter/search for a particular process name.}
-     \subitem{Usage: \texttt{ps -ef | grep InternetExplorer}}
+     \subitem{Note: Use \texttt{grep} to filter/search for a particular process name.}
+     \subitem{Usage: \texttt{ps -ef | grep InternetExploder}}
 
 \item{\texttt{kill}} 
      \subitem{Terminates a process. Expects a process ID.}
      \subitem{Useful options: \texttt{-9} to absolutely terminate a process. The process cannot stop it.}
-     \subitem{Note: In order to see the process IDs, use \texttt{ps}.}
+     \subitem{Note: Use \texttt{ps} to see the process IDs.}
      \subitem{Usage: \texttt{kill 1234}; \texttt{kill -9 12345}}
 
 \item{\texttt{chmod}} 
      \subitem{Changes file permissions.}
      \subitem{Use the command as follows: \texttt{chmod <A><B><C>}, where \texttt{<A>}, \texttt{<B>}, and \texttt{<C>} are explained below.}
      \subitem{There are other ways to use the command (see \texttt{man chmod}), but these ones are useful for most purposes.}
-     \subitem{Values of \texttt{<A>}:}
-        \subsubitem{\texttt{u} (User)}
-        \subsubitem{\texttt{g} (Group)}
-        \subsubitem{\texttt{o} (Others)}
-     \subitem{Values of \texttt{<B>}:}
-        \subsubitem{\texttt{+} (Add)}
-        \subsubitem{\texttt{-} (Remove)}
-     \subitem{Values of \texttt{<C>}:}
-        \subsubitem{\texttt{r} (Read permissions)}
-        \subsubitem{\texttt{w} (Write permissions)}
-        \subsubitem{\texttt{x} (Executable permissions)}
+     \subitem{Values of \texttt{<A>}: \texttt{u} (User), \texttt{g} (Group), \texttt{o} (Others)}
+     \subitem{Values of \texttt{<B>}: \texttt{+} (Add) \texttt{-} (Remove)}
+     \subitem{Values of \texttt{<C>}: \texttt{r} (Read permissions) \texttt{w} (Write permissions) \texttt{x} (Executable permissions)}
      \subitem{Usage:}
         \subsubitem{\texttt{chmod u+x myscript.sh}}
         \subsubitem{\texttt{chmod o-w myfile.txt}}
@@ -194,7 +186,7 @@
 \item{\texttt{diff}}  
      \subitem{Compare two files}
      \subitem{Useful options: \texttt{-i} (ignore case), \texttt{-b} (ignore blank lines)}
-     \subitem{Usage: \texttt{diff a.txt b.txt};\texttt{ diff {a,b}.txt}}
+     \subitem{Usage: \texttt{diff a.txt b.txt};\texttt{ diff \{a,b\}.txt}}
 
 \item{\texttt{wc}}    
      \subitem{Word count tool; useful for counting lines of code and things.}
