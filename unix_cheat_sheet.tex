@@ -141,16 +141,16 @@
 
 \item{\texttt{chmod}} 
      \subitem{Changes file permissions.}
-     \subitem{Use the command as follows: \texttt{chmod [A][B][C]}, where \texttt{[A]} is one of \texttt{ugo}, \texttt{[B]} is one of \texttt{+-}, and \texttt{[C]} is one of \texttt{rwx}.}
-     \subitem{There are other ways to use the command (see \texttt{man chmod}), but these ones are the most useful.}
-     \subitem{Values of \texttt{[A]}:}
+     \subitem{Use the command as follows: \texttt{chmod <A><B><C>}, where \texttt{<A>}, \texttt{<B>}, and \texttt{<C>} are explained below.}
+     \subitem{There are other ways to use the command (see \texttt{man chmod}), but these ones are useful for most purposes.}
+     \subitem{Values of \texttt{<A>}:}
         \subsubitem{\texttt{u} (User)}
         \subsubitem{\texttt{g} (Group)}
         \subsubitem{\texttt{o} (Others)}
-     \subitem{Values of \texttt{[B]}:}
+     \subitem{Values of \texttt{<B>}:}
         \subsubitem{\texttt{+} (Add)}
         \subsubitem{\texttt{-} (Remove)}
-     \subitem{Values of \texttt{[C]}:}
+     \subitem{Values of \texttt{<C>}:}
         \subsubitem{\texttt{r} (Read permissions)}
         \subsubitem{\texttt{w} (Write permissions)}
         \subsubitem{\texttt{x} (Executable permissions)}
@@ -160,8 +160,9 @@
 
 \item{\texttt{chown}} 
      \subitem{Change file ownership.}
-     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
-     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+     \subitem{Use the command as follows: \texttt{chown <owner>:<group> <file>}, \texttt{chown <owner> <file>}, or \texttt{chown :<group> <file>}.}
+     \subitem{Useful options: \texttt{-R} (recursive)}
+     \subitem{Usage: \texttt{chown alvin:up-mit-gsl myfile.txt}}
 
 \item{\texttt{sudo}}  
      \subitem{Do action as another user (\texttt{root} by default)}
