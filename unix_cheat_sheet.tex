@@ -124,22 +124,23 @@
        \subsubitem{\texttt{curl localhost:8000/api/messages/1 -d "message=world" -X "PUT"}}
 
 \item{\texttt{ping}} 
-     \subitem{TODO}
-     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
-     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
-
-\item{\texttt{kill}} 
-     \subitem{TODO}
-     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
-     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+     \subitem{Sends data to a remote server. The server will send data back to you if it is up.}
+     \subitem{Usage: \texttt{ping www.google.com}; \texttt{ping localhost}}
 
 \item{\texttt{ps}} 
-     \subitem{TODO}
-     \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
-     \subitem{Usage: \texttt{open a.png} (opens with Preview)}
+     \subitem{A way to list all processes and their respective process IDs}
+     \subitem{Useful options: Use it with \texttt{-ef}}
+     \subitem{Note: This is more effective when used with \texttt{grep} since you can now filter/search for a particular process name.}
+     \subitem{Usage: \texttt{ps -ef | grep InternetExplorer}}
+
+\item{\texttt{kill}} 
+     \subitem{Terminates a process. Expects a process ID.}
+     \subitem{Useful options: \texttt{-9} to absolutely terminate a process. The process cannot stop it.}
+     \subitem{Note: In order to see the process IDs, use \texttt{ps}.}
+     \subitem{Usage: \texttt{kill -9 12345}}
 
 \item{\texttt{chmod}} 
-     \subitem{TODO}
+     \subitem{Changes file permissions.}
      \subitem{Useful options: \texttt{-d <data>} for form data, \texttt{-X <method>} to specify HTTP method}
      \subitem{Usage: \texttt{open a.png} (opens with Preview)}
 
