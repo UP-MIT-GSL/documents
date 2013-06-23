@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{geometry}
+\usepackage{courier}
+\usepackage{listings}
+\geometry{
+  top=1.0in,            % <-- you want to adjust this
+  inner=0.5in,
+  outer=0.5in,
+  bottom=1.0in,
+  headheight=4ex,       % <-- and this
+  headsep=3ex,          % <-- and this
+}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\addtolength{\parskip}{\baselineskip}  
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\pagestyle{fancy}
+\newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{\leftmark}
+\chead{}
+\rhead{\rightmark}
+\lfoot{}
+\cfoot{Page \thepage}
+\rfoot{}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+\begin{document}
+
+\section{CSS Cheat Sheet}
+
+\begin{enumerate}
+
+\item{\texttt{color}}  
+\begin{itemize}
+    \item Changes the text color
+    \item Colors can be specified by name (e.g., black, white, blue, red), by hexacadecimal value (e.g, \#fff, \#000, \#0000ff, \#ff0000) or with the rgb() function (e.g. rgb(0,0,0), rgb(255,255,255), rgb(0,0,255), rgb(255,0,0)).
+\end{itemize}
+\begin{lstlisting}[frame=single]
+body {
+    color: black;
+}
+.error {
+    color: rgb(255,0, 0)
+}
+\end{lstlisting}
+
+\item{\texttt{background-color}}
+\begin{itemize}
+    \item Changes the background color.  
+    \item Takes in the same values as the \texttt{color} property.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+    background-color: #ecfa01; 
+}
+\end{lstlisting}
+    
+\item{\texttt{font-family}}
+\begin{itemize}
+    \item Sets the font family or \"font face\" of the text.
+    \item You can specify multiple font families by separating them with commas.  The browser will apply the fonts in order of first appearance from left to right, this is good for back-up fonts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  font-family: "Times New Roman"
+}
+p {
+  font-family: "Times New Roman", serif
+}
+\end{lstlisting}
+    
+
+\item{\texttt{font-size}}
+\begin{itemize}
+    \item Sets the size of the text.  
+    \item The common units are pixels (px), ems (em), and percentages (\%).  
+    \item You can also use the following keywords (\texttt{xx-small}, \texttt{x-small}, \texttt{small}, \texttt{medium}, \texttt{large}, \texttt{x-large}, \texttt{xx-large})
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  font-size: 12px;
+}
+p {
+  font-size: 120%;
+}
+input {
+  font-size: 1em;
+}
+button {
+  font-size: xx-large;
+}
+\end{lstlisting}
+    
+\item{\texttt{line-height}}
+\begin{itemize}
+    \item Specifies the height of the line of text.  
+    \item This is different from \texttt{font-size}.  A larger value for \texttt{line-height} than \texttt{font-size} will increase the space above and below the text.  Similary, a smaller \texttt{line-height} than \texttt{font-size} will cause words in different lines to overlap.  
+    \item This property can accept the same values that \texttt{font-size} accepts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  line-height: 10px;
+}
+
+\end{lstlisting}
+    
+\item{\texttt{text-align}}
+\begin{itemize}
+    \item Aligns the text according to the values \texttt{left}, \texttt{right}, \texttt{center} and \texttt{justify}.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.quote {
+  text-align: right;
+}
+\end{lstlisting}
+    
+\item{\texttt{text-decoration}}
+\begin{itemize}
+    \item Decorate the text with an  \texttt{underline} ,  \texttt{overline}, or  \texttt{line-through}.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.link {
+  text-decoraton: underline
+}
+\end{lstlisting}
+    
+
+\item{\texttt{width} and \texttt{height}}
+\begin{itemize}
+    \item Used to resize block elements, commonly specified with the px and \% units.  
+    \item If you use \%, note that 100\% means it will cover 100\% of the parent, if 50\% it will cover half of the parent, and so on.  
+    \item Values with the px unit are fixed as usual.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.avatar {
+  width: 100%;
+  height: 100px;
+}
+\end{lstlisting}
+    
+\item{\texttt{margin}}
+\begin{itemize}
+    \item Specify a space around the element starting from the outer borders of the element, commonly used with px and \%.  
+    \item You can use \texttt{margin-top}, \texttt{margin-right}, \texttt{margin-bottom} and \texttt{margin-left} to target specific areas, otherwise, margin will apply to all four regions.\item If you set margin to auto the browser will make the element take as much space as possible.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+  margin: 10px; 
+}
+p {
+  margin-left: 10px;
+  margin-right: 23px;
+  margin-bottom: auto;
+}
+\end{lstlisting}
+    
+\item{\texttt{padding}}
+\begin{itemize}
+    \item Specify an area inside the element starting from the borders.
+    \item Accepts values that \texttt{margin} accepts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+  padding: 4px;
+}
+p {
+  padding-top: 20px;
+}
+\end{lstlisting}
+\item{\texttt{z-index}}
+\begin{itemize}
+    \item Specifies the stack order of positioned elements.  
+    \item Elements with a higher \texttt{z-index} value will appear on top.  
+    \item Negative numbers are accepted.  
+    \item The default \texttt{z-index} is 1.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.warning {
+  position: relative;
+  z-index: 2;
+}
+\end{lstlisting}
+
+\item{\texttt{float}}
+\begin{itemize}
+    \item Removes the element from the flow and positions the element either \texttt{left} or \texttt{right}. 
+    \item The rest of the content will flow around the floated element.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+img {
+  float: left;
+}
+.caption {
+  float: right;
+}
+\end{lstlisting}
+
+\item{\texttt{clear}}
+\begin{itemize}
+    \item Speciying this will tell the browser not to allow any floated elements to the left or right of the cleared element.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+p {
+  clear: left
+}   
+\end{lstlisting}
+
+
+
+\end{enumerate}
+\end{document} 
+
+​
