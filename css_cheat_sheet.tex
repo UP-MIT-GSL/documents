@@ -1,0 +1,511 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{geometry}
+\usepackage{courier}
+\usepackage{listings}
+\geometry{
+  top=1.0in,            % <-- you want to adjust this
+  inner=0.5in,
+  outer=0.5in,
+  bottom=1.0in,
+  headheight=4ex,       % <-- and this
+  headsep=3ex,          % <-- and this
+}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\addtolength{\parskip}{\baselineskip}  
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\pagestyle{fancy}
+\newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{\leftmark}
+\chead{}
+\rhead{\rightmark}
+\lfoot{}
+\cfoot{Page \thepage}
+\rfoot{}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+\begin{document}
+
+\section{Selectors}
+Note: assume compatible with IE6+, Firefox, Chrome, Safari and Opera unless specified otherwise
+
+\begin{enumerate}
+\item {\texttt{X}}
+  \begin{itemize}
+    \item Targets element Y that is a child of X
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  body {
+    color: black;
+  }
+  input {
+    color: white;
+  }
+  \end{lstlisting}
+
+\item {\texttt{#X}}
+  \begin{itemize}
+    \item ID Selector
+    \item Selects an element with an ID that is X
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  #my-id {
+    color: white;
+  }
+  \end{lstlisting}
+
+\item {\texttt{.X}}
+  \begin{itemize}
+    \item Class Selector
+    \item Selects an element with a class that is X
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  .my-class {
+    color: blue
+  }
+  \end{lstlisting}
+
+\item {\texttt{X Y}}
+  \begin{itemize}
+    \item Descendant Selector
+    \item Targets element Y that is a child of X
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  p a {
+    text-decoration: none;
+  }
+  p .my-class {
+    text-decoration: underline;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X:visited} and \texttt{X:link}}
+  \begin{itemize}
+    \item \texttt{:visited} targest anchor tags (<a>) that have been clicked
+    \item \texttt{:link} targets anchor tags that have not yet been clicked
+    \item Compatability: IE7+
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  a:visited {
+    color: red;
+  }
+  a:line {
+    color: blue;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X[href="foo"]} and \texttt{X[title]}}
+  \begin{itemize}
+    \item Selects X with an attribute href="foo", or with an attribute title.
+    \item Compatability: IE7+
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  a[href="foo"] {
+    color: black;
+  }
+  #my-id[disabled] {
+    color: gray;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X:hover}}
+  \begin{itemize}
+    \item Targets elements that the mouse is over on.  
+    \item Compatability: IE6+, hoever in IE6 it is applicable to <a> tags only title.
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  a:hover {
+    text-decoration: underline;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X:not(Y)}}
+  \begin{itemize}
+    \item Targets all X except those targeted by Y.
+    \item Compatability: IE9+
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  button:not(button[disabled]) {
+    color: white;
+  }
+  input:not[.my-class]{
+    color: black;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X:first-child}}
+  \begin{itemize}
+    \item Targets the first child of the elements parent.  
+    \item Compatability: IE7+
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  ul li {
+    border-top: 1px solid black;
+  }
+  ul li:first-childe{
+    border-top: none;
+  }
+  \end{lstlisting}
+
+\item {\texttt{X:last-child}}
+  \begin{itemize}
+    \item Similar to :first-child only this time it targets the last child.
+    \item Compatability: IE9+
+  \end{itemize}
+
+
+\end{enumerate}
+
+\section{CSS Cheat Sheet}
+\begin{enumerate}
+
+\item{\texttt{color}}  
+\begin{itemize}
+    \item Changes the text color
+    \item Colors can be specified by name (e.g., black, white, blue, red), by hexacadecimal value (e.g, \#fff, \#000, \#0000ff, \#ff0000) or with the rgb() function (e.g. rgb(0,0,0), rgb(255,255,255), rgb(0,0,255), rgb(255,0,0)).
+\end{itemize}
+\begin{lstlisting}[frame=single]
+body {
+    color: black;
+}
+.error {
+    color: rgb(255,0, 0)
+}
+\end{lstlisting}
+
+\item{\texttt{background-color}}
+\begin{itemize}
+    \item Changes the background color.  
+    \item Takes in the same values as the \texttt{color} property.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+    background-color: #ecfa01; 
+}
+\end{lstlisting}
+    
+\item{\texttt{font-family}}
+\begin{itemize}
+    \item Sets the font family or \"font face\" of the text.
+    \item You can specify multiple font families by separating them with commas.  The browser will apply the fonts in order of first appearance from left to right, this is good for back-up fonts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  font-family: "Times New Roman"
+}
+p {
+  font-family: "Times New Roman", serif
+}
+\end{lstlisting}
+    
+
+\item{\texttt{font-size}}
+\begin{itemize}
+    \item Sets the size of the text.  
+    \item The common units are pixels (px), ems (em), and percentages (\%).  
+    \item You can also use the following keywords (\texttt{xx-small}, \texttt{x-small}, \texttt{small}, \texttt{medium}, \texttt{large}, \texttt{x-large}, \texttt{xx-large})
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  font-size: 12px;
+}
+p {
+  font-size: 120%;
+}
+input {
+  font-size: 1em;
+}
+button {
+  font-size: xx-large;
+}
+\end{lstlisting}
+    
+\item{\texttt{line-height}}
+\begin{itemize}
+    \item Specifies the height of the line of text.  
+    \item This is different from \texttt{font-size}.  A larger value for \texttt{line-height} than \texttt{font-size} will increase the space above and below the text.  Similary, a smaller \texttt{line-height} than \texttt{font-size} will cause words in different lines to overlap.  
+    \item This property can accept the same values that \texttt{font-size} accepts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+body {
+  line-height: 10px;
+}
+
+\end{lstlisting}
+    
+\item{\texttt{text-align}}
+\begin{itemize}
+    \item Aligns the text according to the values \texttt{left}, \texttt{right}, \texttt{center} and \texttt{justify}.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.quote {
+  text-align: right;
+}
+\end{lstlisting}
+    
+\item{\texttt{text-decoration}}
+\begin{itemize}
+    \item Decorate the text with an  \texttt{underline} ,  \texttt{overline}, or  \texttt{line-through}.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.link {
+  text-decoraton: underline
+}
+\end{lstlisting}
+    
+
+\item{\texttt{width} and \texttt{height}}
+\begin{itemize}
+    \item Used to resize block elements, commonly specified with the px and \% units.  
+    \item If you use \%, note that 100\% means it will cover 100\% of the parent, if 50\% it will cover half of the parent, and so on.  
+    \item Values with the px unit are fixed as usual.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.avatar {
+  width: 100%;
+  height: 100px;
+}
+\end{lstlisting}
+    
+\item{\texttt{margin}}
+\begin{itemize}
+    \item Specify a space around the element starting from the outer borders of the element, commonly used with px and \%.  
+    \item You can use \texttt{margin-top}, \texttt{margin-right}, \texttt{margin-bottom} and \texttt{margin-left} to target specific areas, otherwise, margin will apply to all four regions.\item If you set margin to auto the browser will make the element take as much space as possible.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+  margin: 10px; 
+}
+p {
+  margin-left: 10px;
+  margin-right: 23px;
+  margin-bottom: auto;
+}
+\end{lstlisting}
+    
+\item{\texttt{padding}}
+\begin{itemize}
+    \item Specify an area inside the element starting from the borders.
+    \item Accepts values that \texttt{margin} accepts.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+input {
+  padding: 4px;
+}
+p {
+  padding-top: 20px;
+}
+\end{lstlisting}
+\item{\texttt{z-index}}
+\begin{itemize}
+    \item Specifies the stack order of positioned elements.  
+    \item Elements with a higher \texttt{z-index} value will appear on top.  
+    \item Negative numbers are accepted.  
+    \item The default \texttt{z-index} is 1.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+.warning {
+  position: relative;
+  z-index: 2;
+}
+\end{lstlisting}
+
+\item{\texttt{float}}
+\begin{itemize}
+    \item Removes the element from the flow and positions the element either \texttt{left} or \texttt{right}. 
+    \item The rest of the content will flow around the floated element.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+img {
+  float: left;
+}
+.caption {
+  float: right;
+}
+\end{lstlisting}
+
+\item{\texttt{clear}}
+\begin{itemize}
+    \item Speciying this will tell the browser not to allow any floated elements to the left or right of the cleared element.
+\end{itemize}    
+\begin{lstlisting}[frame=single]
+p {
+  clear: left
+}   
+\end{lstlisting}
+\end{enumerate}
+
+\section{Twitter Bootstrap}
+\begin{enumerate}
+\item Enable Responsiveness
+\begin{itemize}
+\item Include bootstrap-responsive.css in your main Jade file (index.jade) after boostrap.css
+\end{itemize}  
+
+\item Grid System
+\begin{itemize}
+\item The Boostrap grid system consists of 12 columns that make up a fixed 940px-wide container.
+\item With bootstrap-responsive.css included, the grid adapts to 724px to 1170px.  Below 767px your columns will stack vertically
+\item Important classes: \texttt{.row}, \texttt{.span*}, \texttt{.row-fluid}
+\item The \texttt{.row class} specifies the row of your grid.  It will take up the whole width of the parent.
+\item Under \texttt{.row}, put the appropriate \texttt{.span*} classes.  Remember I said we have 12 columns?  The span classes are \texttt{.span1}, .\texttt{span2}, \texttt{.span3},..., \texttt{.span12}.  The bigger the number, the wider the \texttt{.span*}.
+\item Make sure that your \texttt{.span*} classes are under a \texttt{.row}.
+\item For example, a two column layout in Jade:
+\begin{lstlisting}[frame=single]
+.row
+  .span6
+    // content for first column
+  .span6
+    // content for second column
+\end{lstlisting}
+\item A 3 column layout with unequal widths
+\begin{lstlisting}[frame=single]
+.row
+  .span2
+    // content
+  .span8
+    // main content so it's bigger
+  .span2
+    // more content
+\end{lstlisting}
+\item If you want a smaller grid, don't total 12, it's perfectly alright.
+\item Also you can nest columns
+\begin{lstlisting}[frame=single]
+.row
+  .span9
+    //Level 1 column
+  .row
+    .span6
+      //content
+    .span3
+      //content
+\end{lstlisting}
+\item Stacking columns?
+\begin{lstlisting}[frame=single]
+.row
+  .span4
+  .span4
+  .span4
+.row
+  .span3
+  .span3
+  .span2
+  .span1
+  .span6 
+\end{lstlisting}
+\item .row-fluid is similar to .row only it isn't fixed (uses \% instead of pixels).  It automatically adjusts to the size of the parent.
+\end{itemize}
+
+\item Layout
+\begin{enumerate}
+\item \texttt{.unstyled}
+\begin{itemize}
+\item Your browser renders bullet points for each item in your unordered lists (ul) by default.  If you don't want any bullets, add \texttt{.unstyled} to your ul tag
+\begin{lstlisting}[frame=single]
+ul.ustyled
+  li Bacon 
+  li Tuna
+  li Pitchfork
+  li Avocado
+\end{lstlisting}
+\end{itemize}
+\end{enumerate}
+
+\item Tables
+\begin{enumerate}
+\item \texttt{.table}
+\begin{itemize}
+\item Use this class to create nicely spaced columns with horizontal dividers.
+\end{itemize}
+\item \texttt{.table-striped}
+\begin{itemize}
+\item Makes the table rows alternately gray and white for better readability.
+\end{itemize}
+\end{enumerate}
+
+\item Buttons
+\begin{enumerate}
+\item \texttt{.btn}
+\begin{itemize}
+\item Gives the button rounded corners and a gradient.
+\item When using any of the non-basic button classes, include \texttt{.btn} as well.  This is because \texttt{.btn} defines the border and hover affects and the rest only change the colors and sizes.  So to get the expected Boostrap style do something like this:
+\begin{lstlisting}[frame=single]
+button.btn.btn-primary Click me!
+\end{lstlisting}
+\end{itemize}
+
+\item \texttt{.btn-primary}
+\begin{itemize}
+\item The name speaks for itself.  Put this on important buttons in your page.  Bootstrap colors it blue by default but you may want you can change it to match your brand color (Approach a TA if you want to this and can't figure it out).
+\end{itemize}
+
+\item \texttt{.btn-info}
+\begin{itemize}
+\item The go-to button for displaying information.
+\item Light blue by default.
+\end{itemize}
+
+\item \texttt{.btn-warning}
+\begin{itemize}
+\item Yellow by default.
+\end{itemize}
+
+\item \texttt{.btn-success}
+\begin{itemize}
+\item Green by default.
+\end{itemize}
+
+\item \texttt{.btn-danger}
+\begin{itemize}
+\item Red by default.
+\item Good visual cue for destructive actions (like deleting something permamently).
+\end{itemize}
+
+\item \texttt{.btn-inverse}
+\begin{itemize}
+\item Just a very dark gray button with no semantice meaning.
+\end{itemize}
+
+\item \texttt{.btn-large}, \texttt{.btn-small}, \texttt{.btn-mini}
+\begin{itemize}
+\item Sizes the buttons
+\end{itemize}
+\begin{lstlisting}[frame=single]
+button.btn.btn-large I'm a big button
+button.btn.btn-danger.btn-mini I'm a teeny dangerous button rawr
+\end{lstlisting}
+
+\item \texttt{disabled}
+\begin{itemize}
+\item Add the disabled attribute to the button to make it unclickable and uninviting (It will look washed out and tired and weak).
+\end{itemize}
+\begin{lstlisting}[frame=single]
+button.btn(disabled) No you can't have nice things
+\end{lstlisting}
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document} 
+
+​
