@@ -42,12 +42,199 @@
     urlcolor=blue
 }
 \begin{document}
-\section{Using Git}
-\texttt{git init}
+\section{git Introduction}
+TODO Explain (BRIEFLY!) what a VCS is, what git is, and why it's awesome.
 
-Clone, init, pull, push, fetch, merge, commit, branch, checkout, reset, cherry-pick, stash, remote, rebase, log, gitignore, gitconfig (global and local), ssh keys
-.git folder
+TODO Explain what a repository is.
 
+\section{git commands}
+
+\begin{enumerate}
+
+\item{\texttt{help}}  
+     \subitem{Show help for a git command.}
+     \subitem{Example: \texttt{git help}; \texttt{git help push}; \texttt{git help help}}
+
+\item{\texttt{init}}  
+     \subitem{Create a new repo in the current folder.}
+     \subitem{Example: \texttt{git init}}
+
+\item{\texttt{clone}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{fetch}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{merge}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{pull}}
+     \subitem{TODO}
+     \subitem{A \texttt{fetch} followed by a \texttt{merge}.}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{mv}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{rm}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{commit}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{push}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{branch}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{checkout}}
+     \subitem{[TODO 1. go to a branch (with optional \texttt{-b}), 2. undo changes to tracked file]}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{remote}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{log}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{status}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{diff}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{stash}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{reset}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\end{enumerate}
+
+\section{git 101}
+\subsection{Merge conflicts}
+Probably the most important skill to master while using a version-control system (VCS) is to learn how to resolve merge conflicts properly.
+
+TODO teach how to do it properly
+
+\subsection{Stash}
+TODO
+Please explain concepts (like branching, remotes, stash, etc.) clearly.
+
+\subsection{Branches}
+One of the more powerful features of git is its ability to do branching well. [TODO]
+
+\subsection{Remotes}
+TODO
+Please explain concepts (like branching, remotes, stash, etc.) clearly.
+
+\subsection{.gitignore}
+TODO
+
+TODO also explain \texttt{.gitkeep}, and that it's merely a convention.
+
+
+\subsection{ssh keys}
+TODO
+Please explain concepts (like branching, remotes, stash, etc.) clearly.
+
+\subsection{github}
+TODO explain github essentials
+
+\subsubsection{forking a repo}
+TODO
+\subsubsection{making a pull request}
+TODO
+
+\subsection{Config files}
+Within your repository, there's a file called \texttt{.git/config} which contains [TODO description of .git/config file] (\texttt{.git} is a directory which contains all the data git uses to manage the repository).
+
+Global files are located in \texttt{\urlwofont{~}/.gitconfig}, which is your ``global'' config file (affects all repositories).
+
+TODO explain how to edit config file using \texttt{git config}.
+
+\section{Advanced git}
+
+\subsection{More commands}
+\begin{enumerate}
+
+\item{\texttt{config}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{cherry-pick}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{rebase}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{bisect}}
+     \subitem{Find by binary search the change that introduced a bug}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{grep}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{show}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{tag}}
+     \subitem{TOD}
+     \subitem{Example: \texttt{TODO}}
+
+\end{enumerate}
+
+\subsection{Aliases}
+TODO
+
+\subsubsection{Useful aliases}
+\texttt{[alias]\\
+lol = log --graph --decorate --oneline --abbrev-commit\\
+lola = log --graph --decorate --oneline --abbrev-commit --all\\
+hey = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative\\
+heya = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative 
+}
+
+\subsection{Useful \texttt{.gitconfig} options}
+
+
+\subsection{text editor}
+
+\texttt{[core]\\
+editor = nano }
+
+\subsection{mergeconflict style}
+\texttt{[merge]\\
+conflictstyle = diff3 }
+
+\subsection{coloring}
+\texttt{[color]\\
+  branch = auto\\
+  diff = auto\\
+  interactive = auto\\
+  status = auto }
+
+\section{Online interactive lesson}
+If you want to learn interactively, go to \url{http://pcottle.github.io/learnGitBranching/} . Have fun :)
 
 \end{document} 
 
