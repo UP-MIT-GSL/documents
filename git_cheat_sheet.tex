@@ -43,9 +43,9 @@
 }
 \begin{document}
 \section{git Introduction}
-TODO Explain (BRIEFLY!) what a VCS is, what git is, and why it's awesome.
+A Version Control System (VCS) manages the entire edit history of your code base (or ``repository''. It's helpful in a lot of ways: to go back to previous versions of your code, to revert bad changes, to make collaborating easier, to name a few.
 
-TODO Explain what a repository is.
+git is a distributed VCS. git is nice because of its speed and its ability to efficiently handle merges and manage branches. We hope you share our opinions regarding this :)
 
 \section{git commands}
 
@@ -62,6 +62,14 @@ TODO Explain what a repository is.
 \item{\texttt{clone}}
      \subitem{Copies the repository given, including all the commits and branches.}
      \subitem{Example: \texttt{git clone git@github.com:UP-MIT-GSL/angular-momentum.git}}
+
+\item{\texttt{add}}
+     \subitem{Add (``stage'') the changes for the next commit.}
+     \subitem{Example: \texttt{git add edited/file.html}; \texttt{git add edited/folder/}}
+
+\item{\texttt{status}}
+     \subitem{Display status of your working tree (which files have changed, appeared, disappeared, etc.)}
+     \subitem{Example: \texttt{git status}}
 
 \item{\texttt{commit}}
      \subitem{Saves the changes (commit) made on the added files to the current branch.}
@@ -106,30 +114,41 @@ TODO Explain what a repository is.
      \subitem{1. Go to a branch}
      \subitem{Usage: \texttt{git checkout <branch>}, \texttt{-b} to create new branch at the same time}
      \subitem{Example: \texttt{git checkout my-branch}; \texttt{git checkout -b new-branch}}
+     \subitem{2. Undo changes to a file (sort of)}
+     \subitem{Usage: \texttt{git checkout <file/folder>}}
+     \subitem{Example: \path{git checkout file/with/bad/edits.html}; \path{git checkout folder/with/bad/edits/}}
 
 \item{\texttt{log}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
-
-\item{\texttt{status}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Display the last few commits in your branch/repository.}
+     \subitem{Usage: \texttt{--all} to display all branches, \texttt{--graph} to display a (directed acyclic) graph of your commits, \texttt{oneline} to view each commit log in one line}
+     \subitem{Example: \texttt{git log}; \texttt{git log --graph --oneline}}
 
 \item{\texttt{diff}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Compare two branches.}
+     \subitem{Example: \texttt{git diff branch-1 branch-2}; \texttt{git diff head\textasciicircum1 head}}
 
 \item{\texttt{remote}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{View remotes, add/modify/delete a remote (see ``remotes'' below).}
+     \subitem{Usage:}
+        \subsubitem{\texttt{git remote} - view remotes}
+        \subsubitem{\texttt{git remote -v} - view remotes (verbose)}
+        \subsubitem{\texttt{git remote add <remote-name> <url>} - add a new remote}
+        \subsubitem{\texttt{git remote set-url <remote-name> <url>} - modify remote}
+        \subsubitem{\texttt{git remote rename <remote-name> <new-name>} - rename remote}
+        \subsubitem{\texttt{git remote rm <remote-name>} - remove remote}
+     \subitem{Example: \texttt{git remote -v};}
+     \subitem{\path{git remote add upstream git@github.com:UP-MIT-GSL/angular-momentum.git}}
 
 \item{\texttt{stash}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Save your current changes temporarily (in a Last-in-first-out stack).}
+     \subitem{Useful if you want to switch to a branch temporarily, for example to read a file from a different branch.}
+     \subitem{Usage: \texttt{git stash} to push current changes to the stack, \texttt{git stash pop} to revert saved changes}
 
 \item{\texttt{reset}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Reset changes and move to a specified branch.}
+     \subitem{Usage: \texttt{--soft} move current branch to specified commit, but current changes are retained; \texttt{--hard} move current branch to specified commit and lose current changes.}
+     \subitem{If commit is not specified, defaults to \texttt{HEAD}.}
+     \subitem{Example: \texttt{git reset --hard} (resets all current changes) \texttt{git reset --soft a8baa8c9}}
 
 \end{enumerate}
 
@@ -145,6 +164,8 @@ Please explain concepts (like branching, remotes, stash, etc.) clearly.
 
 \subsection{Branches}
 One of the more powerful features of git is its ability to do branching well. [TODO]
+
+TODO explain HEAD
 
 \subsection{Remotes}
 TODO
@@ -178,6 +199,8 @@ TODO explain how to edit config file using \texttt{git config}.
 \section{Advanced git}
 
 \subsection{More commands}
+If you are brave enough to go to this section, you must realize that \texttt{git help <command>} will give more details about the command.
+
 \begin{enumerate}
 
 \item{\texttt{config}}
@@ -205,7 +228,7 @@ TODO explain how to edit config file using \texttt{git config}.
      \subitem{Example: \texttt{TODO}}
 
 \item{\texttt{tag}}
-     \subitem{TOD}
+     \subitem{TODO}
      \subitem{Example: \texttt{TODO}}
 
 \item{\texttt{mv}}
@@ -218,6 +241,8 @@ TODO explain how to edit config file using \texttt{git config}.
 TODO
 
 \subsubsection{Useful aliases}
+Some aliases that are very nice (that I got from the internet)
+
 \texttt{[alias]\\
 lol = log --graph --decorate --oneline --abbrev-commit\\
 lola = log --graph --decorate --oneline --abbrev-commit --all\\
@@ -225,19 +250,27 @@ hey = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar
 heya = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative 
 }
 
+You can now use \texttt{git lol} or \texttt{git lola} or \texttt{git heya} for very nice graphs of your commits!
+
 \subsection{Useful \texttt{.gitconfig} options}
 
-
 \subsection{text editor}
+If you're not yet familiar with the text editor \texttt{vim} and would like to use another one for writing commit messages, add the following to your \texttt{.gitconfig} file (to use the \texttt{nano} text editor).
 
 \texttt{[core]\\
 editor = nano }
 
+Note, press \texttt{Ctrl+X} to exit \texttt{nano}
+
 \subsection{mergeconflict style}
+If, while resolving merge conflicts, you'd like to see the original version, in addition to your edited version and their edited version, add the following to your \texttt{.gitconfig} file.
+
 \texttt{[merge]\\
 conflictstyle = diff3 }
 
 \subsection{coloring}
+Add the following to your \texttt{.gitconfig} file to add coloring to git outputs like \texttt{git log} or \texttt{git status}.
+
 \texttt{[color]\\
   branch = auto\\
   diff = auto\\
