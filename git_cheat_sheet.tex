@@ -63,48 +63,49 @@ TODO Explain what a repository is.
      \subitem{Copies the repository given, including all the commits and branches.}
      \subitem{Example: \texttt{git clone git@github.com:UP-MIT-GSL/angular-momentum.git}}
 
-\item{\texttt{fetch}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+\item{\texttt{commit}}
+     \subitem{Saves the changes (commit) made on the added files to the current branch.}
+     \subitem{Usage: \texttt{-m} for adding a message to the commit, \texttt{-a} for adding all the modified files to the changes.}
+     \subitem{Example: \texttt{git add index.html; git commit -m "added index.html"}}
 
 \item{\texttt{merge}}
-     \subitem{Combines your current branch with the branch to be merged with. This command is intelligent for it will automatically combine the two if they have no conflicts, e.g. in branch 1 line 256 of file A was changed, while in branch 2 line 512 of file A was changed. If there is a conflict, it will show which files and lines it occurred.}
+     \subitem{Combines your current branch with the branch to be merged with.}
+     \subitem{This command is intelligent for it will automatically combine the two if they have no conflicts.}
+     \subitem{e.g. in branch 1 line 256 of file A was changed, while in branch 2 line 512 of file A was changed. \texttt{git merge} detects no conflicts and merges the changes correctly.}
+     \subitem{If there is a conflict, it will show which files and lines it occurred. You have to manually resolve the merges and finish the merge commit.}
      \subitem{Usage: \texttt{git merge <branch\_to\_be\_merged\_with>}}
      \subitem{Example: \texttt{git checkout master; git merge fix-website-title}}
 
-\item{\texttt{pull}}
-     \subitem{TODO}
-     \subitem{A \texttt{fetch} followed by a \texttt{merge}.}
-     \subitem{Example: \texttt{TODO}}
+\item{\texttt{fetch}}
+     \subitem{Get all commits/branches from a remote repository (see ``remote branches'' below).}
+     \subitem{Doesn't merge it yet with your branches.}
+     \subitem{Usage: \texttt{--all} fetch from all remotes you are tracking.}
+     \subitem{Example: \texttt{git fetch origin}; \texttt{git fetch --all}}
 
-\item{\texttt{mv}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+\item{\texttt{pull}}
+     \subitem{A \texttt{fetch} followed by a \texttt{merge} (essentially).}
+     \subitem{Usage: \texttt{git pull <repository> <branch>}}
+     \subitem{Example: \texttt{git pull}; \texttt{git pull upstream master}}
 
 \item{\texttt{rm}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
-
-\item{\texttt{commit}}
-     \subitem{Saves the changes (commit) made on the added files to the current branch.}
-     \subitem{Usage: \texttt{-m} for adding a message to the commit, \texttt{-a} for adding all the modified files to the changes.
-     \subitem{Example: \texttt{git add index.html; git commit -m "added index.html"}}
+     \subitem{Remove files in the next commit.}
+     \subitem{Usage: \texttt{-r} recursive}
+     \subitem{Example: \texttt{git rm file/to/be/removed.html}; \texttt{git rm folder/to/be/removed/}}
 
 \item{\texttt{push}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Push all commits in the current branch to a remote branch (see ``remotes'' below.)}
+     \subitem{Usage: \texttt{git push <repository> <branch>}}
+     \subitem{Example: \texttt{git push}; \texttt{git push origin master}}
 
 \item{\texttt{branch}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Display all branches, create/delete a branch.}
+     \subitem{Usage: \texttt{git branch} displays all branches, \texttt{git branch <branch_name>} creates a new branch, \texttt{git branch -d <branch_name>} deletes a branch (use \texttt{-D} to force delete)}
+     \subitem{Example: \texttt{git branch}; \texttt{git branch new-branch}}
 
 \item{\texttt{checkout}}
-     \subitem{[TODO 1. go to a branch (with optional \texttt{-b}), 2. undo changes to tracked file]}
-     \subitem{Example: \texttt{TODO}}
-
-\item{\texttt{remote}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{1. Go to a branch}
+     \subitem{Usage: \texttt{git checkout <branch>}, \texttt{-b} to create new branch at the same time}
+     \subitem{Example: \texttt{git checkout my-branch}; \texttt{git checkout -b new-branch}}
 
 \item{\texttt{log}}
      \subitem{TODO}
@@ -115,6 +116,10 @@ TODO Explain what a repository is.
      \subitem{Example: \texttt{TODO}}
 
 \item{\texttt{diff}}
+     \subitem{TODO}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{remote}}
      \subitem{TODO}
      \subitem{Example: \texttt{TODO}}
 
@@ -201,6 +206,10 @@ TODO explain how to edit config file using \texttt{git config}.
 
 \item{\texttt{tag}}
      \subitem{TOD}
+     \subitem{Example: \texttt{TODO}}
+
+\item{\texttt{mv}}
+     \subitem{TODO}
      \subitem{Example: \texttt{TODO}}
 
 \end{enumerate}
