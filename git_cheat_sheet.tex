@@ -238,7 +238,24 @@ If you are brave enough to go to this section, you must realize that \texttt{git
 \end{enumerate}
 
 \subsection{Aliases}
-TODO
+A git alias is a way to avoid typing long common commands over and over again. For example, if you find yourself typing the command \texttt{git log --graph --oneline} over and over again, you can make an alias by editing your \texttt{.gitconfig} file and adding:
+
+\texttt{[alias]\\
+graph = log --graph --online
+}
+
+You can now use \texttt{git graph}, which is now identical to \texttt{git log --graph --oneline} !
+
+You can use this for abbreviation, e.g. \texttt{git cmt} instead of \texttt{git commit}, etc. You can still pass flags/arguments.
+
+You can also use the underlying shell!
+
+\texttt{[alias]\\
+hi = !echo "Hello world!"
+}
+
+So \texttt{git hi} will print ``Hello world!''
+
 
 \subsubsection{Useful aliases}
 Some aliases that are very nice (that I got from the internet)
@@ -252,6 +269,8 @@ heya = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold gre
 
 You can now use \texttt{git lol} or \texttt{git lola} or \texttt{git heya} for very nice graphs of your commits!
 
+\subsubsection{Other aliases}
+Visit \url{https://git.wiki.kernel.org/index.php/Aliases} for more cool aliases.
 \subsection{Useful \texttt{.gitconfig} options}
 
 \subsection{text editor}
