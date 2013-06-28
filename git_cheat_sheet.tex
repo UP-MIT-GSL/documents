@@ -60,16 +60,17 @@ TODO Explain what a repository is.
      \subitem{Example: \texttt{git init}}
 
 \item{\texttt{clone}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Copies the repository given, including all the commits and branches.}
+     \subitem{Example: \texttt{git clone git@github.com:UP-MIT-GSL/angular-momentum.git}}
 
 \item{\texttt{fetch}}
      \subitem{TODO}
      \subitem{Example: \texttt{TODO}}
 
 \item{\texttt{merge}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Combines your current branch with the branch to be merged with. This command is intelligent for it will automatically combine the two if they have no conflicts, e.g. in branch 1 line 256 of file A was changed, while in branch 2 line 512 of file A was changed. If there is a conflict, it will show which files and lines it occurred.}
+     \subitem{Usage: \texttt{git merge <branch\_to\_be\_merged\_with>}}
+     \subitem{Example: \texttt{git checkout master; git merge fix-website-title}}
 
 \item{\texttt{pull}}
      \subitem{TODO}
@@ -85,8 +86,9 @@ TODO Explain what a repository is.
      \subitem{Example: \texttt{TODO}}
 
 \item{\texttt{commit}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Saves the changes (commit) made on the added files to the current branch.}
+     \subitem{Usage: \texttt{-m} for adding a message to the commit, \texttt{-a} for adding all the modified files to the changes.
+     \subitem{Example: \texttt{git add index.html; git commit -m "added index.html"}}
 
 \item{\texttt{push}}
      \subitem{TODO}
