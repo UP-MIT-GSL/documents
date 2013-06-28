@@ -85,7 +85,7 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
      \subitem{Example: \texttt{git checkout master; git merge fix-website-title}}
 
 \item{\texttt{fetch}}
-     \subitem{Get all commits/branches from a remote repository (see ``remote branches'' below).}
+     \subitem{Get all commits/branches from a remote repository (see ``remotes'' below).}
      \subitem{Doesn't merge it yet with your branches.}
      \subitem{Usage: \texttt{--all} fetch from all remotes you are tracking.}
      \subitem{Example: \texttt{git fetch origin}; \texttt{git fetch --all}}
@@ -117,7 +117,8 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
      \subitem{Example: \texttt{git checkout my-branch}; \texttt{git checkout -b new-branch}}
      \subitem{2. Undo changes to a file (sort of)}
      \subitem{Usage: \texttt{git checkout <file/folder>}}
-     \subitem{Example: \path{git checkout file/with/bad/edits.html}; \path{git checkout folder/with/bad/edits/}}
+     \subitem{Example: \texttt{git checkout file/with/bad/edits.html};}
+     \subitem{\texttt{git checkout folder/with/bad/edits/}}
 
 \item{\texttt{log}}
      \subitem{Display the last few commits in your branch/repository.}
@@ -138,7 +139,7 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
         \subsubitem{\texttt{git remote rename <remote-name> <new-name>} - rename remote}
         \subsubitem{\texttt{git remote rm <remote-name>} - remove remote}
      \subitem{Example: \texttt{git remote -v};}
-     \subitem{\path{git remote add upstream git@github.com:UP-MIT-GSL/angular-momentum.git}}
+     \subitem{\texttt{git remote add upstream git@github.com:UP-MIT-GSL/angular-momentum.git}}
 
 \item{\texttt{stash}}
      \subitem{Save your current changes temporarily (in a Last-in-first-out stack).}
@@ -149,7 +150,7 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
      \subitem{Reset changes and move to a specified branch.}
      \subitem{Usage: \texttt{--soft} move current branch to specified commit, but current changes are retained; \texttt{--hard} move current branch to specified commit and lose current changes.}
      \subitem{If commit is not specified, defaults to \texttt{HEAD}.}
-     \subitem{Example: \texttt{git reset --hard} (resets all current changes) \texttt{git reset --soft a8baa8c9}}
+     \subitem{Example: \texttt{git reset --hard} (resets all current changes); \texttt{git reset --soft a8baa8c9}}
 
 \end{enumerate}
 
@@ -168,7 +169,7 @@ CONFLICT (content): Merge conflict in myfile2.html\\
 Automatic merge failed; fix conflicts and then commit the result.
 }
 
-This means a merge conflict occurred (you and someone else edited the same lines of the same file). You must resolve the conflict manually, by opening the files \texttt{myfile.html} and \texttt{myfile2.html}. You will see that git has marked the places where conflict occurred, and waits for a human to merge the changes correctly. Please be careful not to override the other's changes, and don't forget to remove the markers \texttt{<<<<<<< ======= >>>>>>>}!
+This means a merge conflict occurred (you and someone else edited the same lines of the same file). You must resolve the conflict manually, by opening the files \texttt{myfile.html} and \texttt{myfile2.html}. You will see that git has marked the places where conflict occurred, and waits for a human to merge the changes correctly. Please be careful not to override the other's changes, and don't forget to remove the markers (\texttt{<<<<<<<}, \texttt{=======}, \texttt{>>>>>>>})!
 
 After resolving, run \texttt{git status} to see if there are more conflicts. If all conflicts are resolved, complete the merge by running \texttt{git commit -a [-m "Merge message"]}.
 
@@ -184,11 +185,11 @@ To see your branches and the commits they point to, run \texttt{git log --graph 
 Usually a repository has a main branch, and it's usually called \texttt{master} (this name is not a special name in git, it's just the default)
 
 \subsection{Remotes}
-A remote is basically a pointer to a repository from somewhere else (e.g. from github, or someone else's computer).
+A remote is basically a pointer to a repository somewhere else (e.g. a repository in github, or in someone else's computer).
 
 To specify a remote, you give it a name, and a URL pointing to the repository (for example, \url{git@github.com:UP-MIT-GSL/angular-momentum.git}).
 
-When you clone a repository, git automatically sets up a remote named \texttt{origin}, which points to the repository you cloned from. (\texttt{origin} is not a special name in git) Commands such as \texttt{git push} and \texttt{git pull} default to \texttt{origin} when remote is not specified.
+When you clone a repository, git automatically sets up a remote named \texttt{origin}, which points to the repository you cloned from (\texttt{origin} is not a special name in git, it's just the default). Commands such as \texttt{git push} and \texttt{git pull} default to \texttt{origin} when remote is not specified.
 
 Since remotes are separate repositories, they may have their own branches/commits apart from yours. For example, if a remote named \texttt{alvin} has a branch called \texttt{my-branch}, you refer to that branch as \texttt{alvin/my-branch}.
 
@@ -197,7 +198,19 @@ We use the \texttt{git remote} command to manage remotes.
 \subsection{.gitignore}
 Sometimes there are files you don't want to include in your version control system. Specify these files by adding a file called \texttt{.gitignore} inside your repository. Add lines of file/folder names/patterns there, one in each line, and git will ignore those files.
 
-See example in Angular Momentum.
+Here's an example (from Angular Momentum).
+
+\texttt{\\
+.vagrant\\
+.DS\_Store\\
+/backend/database.json\\
+/backend/build/\\
+*.pyc\\
+*.swp\\
+/frontend/node\_modules/\\
+/frontend/vendor/\\
+/frontend/build/
+}
 
 \subsection{github.com}
 \url{github.com} is a website that hosts git repositories. Angular Momentum (and many other projects such as Linux) is hosted there.
@@ -279,17 +292,15 @@ Some aliases that are very nice (that I got from the internet)
 \texttt{[alias]\\
 lol = log --graph --decorate --oneline --abbrev-commit\\
 lola = log --graph --decorate --oneline --abbrev-commit --all\\
-hey = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative\\
-heya = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative 
 }
 
-You can now use \texttt{git lol} or \texttt{git lola} or \texttt{git heya} for very nice graphs of your commits!
+You can now use \texttt{git lol} or \texttt{git lola} for very nice graphs of your commits!
 
 \subsubsection{Other aliases}
 Visit \url{https://git.wiki.kernel.org/index.php/Aliases} for more cool aliases.
 \subsection{Useful \texttt{.gitconfig} options}
 
-\subsubsection{text editor}
+\subsubsection{Text editor}
 If you're not yet familiar with the text editor \texttt{vim} and would like to use another one for writing commit messages, add the following to your \texttt{.gitconfig} file (to use the \texttt{nano} text editor).
 
 \texttt{[core]\\
@@ -297,7 +308,7 @@ editor = nano }
 
 Note, press \texttt{Ctrl+X} to exit \texttt{nano}
 
-\subsubsection{mergeconflict style}
+\subsubsection{Merge Conflict Style}
 If, while resolving merge conflicts, you'd like to see the original version, in addition to your edited version and their edited version, add the following to your \texttt{.gitconfig} file.
 
 \texttt{[merge]\\
@@ -305,7 +316,7 @@ conflictstyle = diff3 }
 
 This is very helpful in my opinion.
 
-\subsubsection{coloring}
+\subsubsection{Coloring}
 Add the following to your \texttt{.gitconfig} file to add coloring to git outputs such as \texttt{git log} or \texttt{git status}.
 
 \texttt{[color]\\
