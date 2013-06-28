@@ -72,15 +72,15 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
      \subitem{Example: \texttt{git status}}
 
 \item{\texttt{commit}}
-     \subitem{Saves the changes (commit) made on the added files to the current branch.}
+     \subitem{Saves the staged changes (``commit'') to the current branch. See \texttt{git add} above and ``branches'' below.}
      \subitem{Usage: \texttt{-m} for adding a message to the commit, \texttt{-a} for adding all the modified files to the changes.}
      \subitem{Example: \texttt{git add index.html; git commit -m "added index.html"}}
 
 \item{\texttt{merge}}
-     \subitem{Combines your current branch with the branch to be merged with.}
-     \subitem{This command is intelligent for it will automatically combine the two if they have no conflicts.}
+     \subitem{Combine your current branch with another branch.}
+     \subitem{This command is intelligent; it will merge correctly automatically if there are no conflicts.}
      \subitem{e.g. in branch 1 line 256 of file A was changed, while in branch 2 line 512 of file A was changed. \texttt{git merge} detects no conflicts and merges the changes correctly.}
-     \subitem{If there is a conflict, it will show which files and lines it occurred. You have to manually resolve the merges and finish the merge commit.}
+     \subitem{If there are conflicts, git will show in which files and lines the conflicts occurred. You need to manually resolve the conflicts and finish the merge commit yourself (see ``merge conflicts'' below).}
      \subitem{Usage: \texttt{git merge <branch\_to\_be\_merged\_with>}}
      \subitem{Example: \texttt{git checkout master; git merge fix-website-title}}
 
@@ -102,7 +102,7 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
 
 \item{\texttt{push}}
      \subitem{Push all commits in the current branch to a remote branch (see ``remotes'' below.)}
-     \subitem{Sometimes, when pushing, you would encounter errors. It's better to follow the rule of thumb: pull (or fetch+merge) first before push.}
+     \subitem{Sometimes, when pushing, you may encounter errors. It's better to follow the rule of thumb: pull (or fetch+merge) first before push.}
      \subitem{Usage: \texttt{git push <repository> <branch>}}
      \subitem{Example: \texttt{git push}; \texttt{git push origin master}}
 
@@ -160,16 +160,15 @@ Probably the most important skill to master while using a version-control system
 
 Say you pulled changes from a repo with \texttt{git pull} or \texttt{git merge}. Usually it will either succeed silently, or ask you for a commit message for the merge, and . But the following message came up:
 
-\texttt{
-Auto-merging myfile.html
-CONFLICT (content): Merge conflict in myfile.html
-Automatic merge failed; fix conflicts and then commit the result.
-Auto-merging myfile2.html
-CONFLICT (content): Merge conflict in myfile2.html
+\texttt{Auto-merging myfile.html\\
+CONFLICT (content): Merge conflict in myfile.html\\
+Automatic merge failed; fix conflicts and then commit the result.\\
+Auto-merging myfile2.html\\
+CONFLICT (content): Merge conflict in myfile2.html\\
 Automatic merge failed; fix conflicts and then commit the result.
 }
 
-This means a merge conflict occurred (you and someone else edited the same lines of the same file). You must resolve the conflict manually, by opening the files \texttt{myfile.html} and \texttt{myfile2.html}. You will see that git has marked the places where conflict occurred, and waits for a human to merge the changes correctly. Please be careful not to override the other's changes, and don't forget to remove the markers \texttt{<<<< ==== >>>>}!
+This means a merge conflict occurred (you and someone else edited the same lines of the same file). You must resolve the conflict manually, by opening the files \texttt{myfile.html} and \texttt{myfile2.html}. You will see that git has marked the places where conflict occurred, and waits for a human to merge the changes correctly. Please be careful not to override the other's changes, and don't forget to remove the markers \texttt{<<<<<<< ======= >>>>>>>}!
 
 After resolving, run \texttt{git status} to see if there are more conflicts. If all conflicts are resolved, complete the merge by running \texttt{git commit -a [-m "Merge message"]}.
 
@@ -178,40 +177,47 @@ One of the more powerful features of git is its ability to do branching well. Un
 
 A branch is basically a pointer to a commit. When you make a commit, the branch you are currently on updates its pointer to the newly-created commit.
 
-Since a branch is basically a pointer, creating a new one doesn't take up a lot of memory. You can create, delete, switch branches, etc., using the commands \texttt{git branch} and \texttt{git checkout}.
+Since a branch is basically a pointer, creating a new one doesn't take up a lot of memory. You can create, delete, switch branches, etc., using the commands \texttt{git branch} and \texttt{git checkout}. When you switch branches, the files in your current directory are magically updated!
 
 To see your branches and the commits they point to, run \texttt{git log --graph --oneline --decorate} (\texttt{HEAD} points to the commit/branch you're currently at.)
 
 Usually a repository has a main branch, and it's usually called \texttt{master} (this name is not a special name in git, it's just the default)
 
 \subsection{Remotes}
-TODO
-Please explain concepts (like branching, remotes, stash, etc.) clearly.
+A remote is basically a pointer to a repository from somewhere else (e.g. from github, or someone else's computer).
+
+To specify a remote, you give it a name, and a URL pointing to the repository (for example, \url{git@github.com:UP-MIT-GSL/angular-momentum.git}).
+
+When you clone a repository, git automatically sets up a remote named \texttt{origin}, which points to the repository you cloned from. (\texttt{origin} is not a special name in git) Commands such as \texttt{git push} and \texttt{git pull} default to \texttt{origin} when remote is not specified.
+
+Since remotes are separate repositories, they may have their own branches/commits apart from yours. For example, if a remote named \texttt{alvin} has a branch called \texttt{my-branch}, you refer to that branch as \texttt{alvin/my-branch}.
+
+We use the \texttt{git remote} command to manage remotes.
 
 \subsection{.gitignore}
-TODO
+Sometimes there are files you don't want to include in your version control system. Specify these files by adding a file called \texttt{.gitignore} inside your repository. Add lines of file/folder names/patterns there, one in each line, and git will ignore those files.
 
-TODO also explain \texttt{.gitkeep}, and that it's merely a convention.
+See example in Angular Momentum.
 
-
-\subsection{ssh keys}
-TODO
-Please explain concepts (like branching, remotes, stash, etc.) clearly.
-
-\subsection{github}
-TODO explain github essentials
+\subsection{github.com}
+\url{github.com} is a website that hosts git repositories. Angular Momentum (and many other projects such as Linux) is hosted there.
 
 \subsubsection{forking a repo}
-TODO
+To fork a repo in github, go to the repository page, and click the ``Fork'' button in the top-right corner. This will make a copy of that repo, under your account, which is totally yours to edit.
+
 \subsubsection{making a pull request}
-TODO
+If you forked a repo, made some changes, and eventually you want to push those changes to the original repository, you do so by making a ``pull request''.
+
+Usually you won't have write access to such a repository, so you request its owners to check out your edits and let them decide if your changes are good. This is how open-source contribution usually works.
+
+To make a pull request, visit your repository, and visit the branch you would like to merge, and click ``pull request'' in the top-right corner. This means you have to put your changes in a separate branch for every feature (which is good practice).
 
 \subsection{Config files}
-Within your repository, there's a file called \texttt{.git/config} which contains [TODO description of .git/config file] (\texttt{.git} is a directory which contains all the data git uses to manage the repository).
+Within your repository, there's a file called \texttt{.git/config} which contains configuration options for your repository (\texttt{.git} is a directory which contains all the data git uses to manage the repository: history, branches, etc.).
 
-Global files are located in \texttt{\urlwofont{~}/.gitconfig}, which is your ``global'' config file (affects all repositories).
+Global files are located in \texttt{\urlwofont{~}/.gitconfig}, which is your ``global'' config file (settings here affect all repositories).
 
-TODO explain how to edit config file using \texttt{git config}.
+You can edit your config files manually, or you can use the command \texttt{git config} (explained below).
 
 \section{Advanced git}
 
@@ -220,37 +226,30 @@ If you are brave enough to go to this section, you must realize that \texttt{git
 
 \begin{enumerate}
 
+\item{\texttt{mv}}
+     \subitem{Move or rename a file (useful for certain merge conflicts e.g. when someone else modified the moved/renamed file)}
+
 \item{\texttt{config}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Modify config file}
+     \subitem{Usage: \texttt{git config <name> <value>} \texttt{--global} Add to global config file instead}
+     \subitem{Example: \texttt{git config merge.conflictstyle diff3};}
+     \subitem{\texttt{git config --global user.name "Cloud Strife"}}
 
 \item{\texttt{cherry-pick}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Get changes of a particular commit and apply those changes to current branch, creating a new commit.}
 
 \item{\texttt{rebase}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Modify the commit history, e.g. by compressing a group of commits into a single one.}
+     \subitem{Warning: Potentially dangerous operation}
 
 \item{\texttt{bisect}}
-     \subitem{Find by binary search the change that introduced a bug}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Find by binary search the change that introduced a bug.}
 
 \item{\texttt{grep}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
-
-\item{\texttt{show}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{\texttt{grep} your repository!}
 
 \item{\texttt{tag}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
-
-\item{\texttt{mv}}
-     \subitem{TODO}
-     \subitem{Example: \texttt{TODO}}
+     \subitem{Add tags to commits.}
 
 \end{enumerate}
 
@@ -290,7 +289,7 @@ You can now use \texttt{git lol} or \texttt{git lola} or \texttt{git heya} for v
 Visit \url{https://git.wiki.kernel.org/index.php/Aliases} for more cool aliases.
 \subsection{Useful \texttt{.gitconfig} options}
 
-\subsection{text editor}
+\subsubsection{text editor}
 If you're not yet familiar with the text editor \texttt{vim} and would like to use another one for writing commit messages, add the following to your \texttt{.gitconfig} file (to use the \texttt{nano} text editor).
 
 \texttt{[core]\\
@@ -298,7 +297,7 @@ editor = nano }
 
 Note, press \texttt{Ctrl+X} to exit \texttt{nano}
 
-\subsection{mergeconflict style}
+\subsubsection{mergeconflict style}
 If, while resolving merge conflicts, you'd like to see the original version, in addition to your edited version and their edited version, add the following to your \texttt{.gitconfig} file.
 
 \texttt{[merge]\\
@@ -306,7 +305,7 @@ conflictstyle = diff3 }
 
 This is very helpful in my opinion.
 
-\subsection{coloring}
+\subsubsection{coloring}
 Add the following to your \texttt{.gitconfig} file to add coloring to git outputs such as \texttt{git log} or \texttt{git status}.
 
 \texttt{[color]\\
