@@ -87,7 +87,7 @@ Note: assume compatible with IE6+, Firefox, Chrome, Safari and Opera unless spec
 \item {\texttt{X Y}}
   \begin{itemize}
     \item Descendant Selector
-    \item Targets element \texttt{Y} that is a child of \texttt{X}
+    \item Targets element \texttt{Y} that is a descendant of \texttt{X}
   \end{itemize}
   \begin{lstlisting}[frame=single]
   p a {
@@ -97,6 +97,18 @@ Note: assume compatible with IE6+, Firefox, Chrome, Safari and Opera unless spec
     text-decoration: underline;
   }
   \end{lstlisting}
+
+\item {\texttt{X > Y}}
+  \begin{itemize}
+    \item Child Selector
+    \item Targets element \texttt{Y} that is a child (direct descendant) of \texttt{X}
+    \item It is recommended to use the child selector instead of the descendant selector for better performance
+  \end{itemize}
+  \begin{lstlisting}[frame=single]
+  ul > li {
+    color:  black;
+  }
+  \end{lstlisting}  
 
 \item {\texttt{X:visited} and \texttt{X:link}}
   \begin{itemize}
@@ -505,9 +517,28 @@ button.btn(disabled) No you can't have nice things
 
 \end{enumerate}
 
-
 \end{enumerate}
+
 
 \end{document} 
 
 ​
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
