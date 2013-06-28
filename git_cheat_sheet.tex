@@ -102,6 +102,7 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
 
 \item{\texttt{push}}
      \subitem{Push all commits in the current branch to a remote branch (see ``remotes'' below.)}
+     \subitem{Sometimes, when pushing, you would encounter errors. It's better to follow the rule of thumb: pull (or fetch+merge) first before push.}
      \subitem{Usage: \texttt{git push <repository> <branch>}}
      \subitem{Example: \texttt{git push}; \texttt{git push origin master}}
 
@@ -153,19 +154,35 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
 \end{enumerate}
 
 \section{git 101}
+
 \subsection{Merge conflicts}
 Probably the most important skill to master while using a version-control system (VCS) is to learn how to resolve merge conflicts properly.
 
-TODO teach how to do it properly
+Say you pulled changes from a repo with \texttt{git pull} or \texttt{git merge}. Usually it will either succeed silently, or ask you for a commit message for the merge, and . But the following message came up:
 
-\subsection{Stash}
-TODO
-Please explain concepts (like branching, remotes, stash, etc.) clearly.
+\texttt{
+Auto-merging myfile.html
+CONFLICT (content): Merge conflict in myfile.html
+Automatic merge failed; fix conflicts and then commit the result.
+Auto-merging myfile2.html
+CONFLICT (content): Merge conflict in myfile2.html
+Automatic merge failed; fix conflicts and then commit the result.
+}
+
+This means a merge conflict occurred (you and someone else edited the same lines of the same file). You must resolve the conflict manually, by opening the files \texttt{myfile.html} and \texttt{myfile2.html}. You will see that git has marked the places where conflict occurred, and waits for a human to merge the changes correctly. Please be careful not to override the other's changes, and don't forget to remove the markers \texttt{<<<< ==== >>>>}!
+
+After resolving, run \texttt{git status} to see if there are more conflicts. If all conflicts are resolved, complete the merge by running \texttt{git commit -a [-m "Merge message"]}.
 
 \subsection{Branches}
-One of the more powerful features of git is its ability to do branching well. [TODO]
+One of the more powerful features of git is its ability to do branching well. Unlike other VCSs, branches in git are lightweight, so it's ok to make lots of branches and throw them away later.
 
-TODO explain HEAD
+A branch is basically a pointer to a commit. When you make a commit, the branch you are currently on updates its pointer to the newly-created commit.
+
+Since a branch is basically a pointer, creating a new one doesn't take up a lot of memory. You can create, delete, switch branches, etc., using the commands \texttt{git branch} and \texttt{git checkout}.
+
+To see your branches and the commits they point to, run \texttt{git log --graph --oneline --decorate} (\texttt{HEAD} points to the commit/branch you're currently at.)
+
+Usually a repository has a main branch, and it's usually called \texttt{master} (this name is not a special name in git, it's just the default)
 
 \subsection{Remotes}
 TODO
@@ -287,8 +304,10 @@ If, while resolving merge conflicts, you'd like to see the original version, in 
 \texttt{[merge]\\
 conflictstyle = diff3 }
 
+This is very helpful in my opinion.
+
 \subsection{coloring}
-Add the following to your \texttt{.gitconfig} file to add coloring to git outputs like \texttt{git log} or \texttt{git status}.
+Add the following to your \texttt{.gitconfig} file to add coloring to git outputs such as \texttt{git log} or \texttt{git status}.
 
 \texttt{[color]\\
   branch = auto\\
