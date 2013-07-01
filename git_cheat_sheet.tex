@@ -129,6 +129,12 @@ git is a distributed VCS. git is nice because of its speed and its ability to ef
      \subitem{Compare two branches.}
      \subitem{Example: \texttt{git diff branch-1 branch-2}; \texttt{git diff head\textasciicircum1 head}}
 
+\item{\texttt{blame}}
+     \subitem{Display who created/edited each line of a file, and when (i.e. in which commit).}
+     \subitem{Useful for tracking down which commit a line was created.}
+     \subitem{Also useful for blaming other people for problems caused.}
+     \subitem{Example: \texttt{git blame frontend/src/index.jade}}
+
 \item{\texttt{remote}}
      \subitem{View remotes, add/modify/delete a remote (see ``remotes'' below).}
      \subitem{Usage:}
@@ -273,11 +279,9 @@ A git alias is a way to avoid typing long common commands over and over again. F
 graph = log --graph --online
 }
 
-You can now use \texttt{git graph}, which is now identical to \texttt{git log --graph --oneline} !
+You can now use \texttt{git graph}, which is now identical to \texttt{git log --graph --oneline} ! 
 
-You can use this for abbreviation, e.g. \texttt{git cmt} instead of \texttt{git commit}, etc. You can still pass flags/arguments.
-
-You can also use the underlying shell!
+You can use this for abbreviation, e.g. \texttt{git cmt} instead of \texttt{git commit}, etc. You can still pass flags/arguments. You can also use the underlying shell!
 
 \texttt{[alias]\\
 hi = !echo "Hello world!"
@@ -309,12 +313,10 @@ editor = nano }
 Note, press \texttt{Ctrl+X} to exit \texttt{nano}
 
 \subsubsection{Merge Conflict Style}
-If, while resolving merge conflicts, you'd like to see the original version, in addition to your edited version and their edited version, add the following to your \texttt{.gitconfig} file.
+If, while resolving merge conflicts, you'd like to see the original version, in addition to your edited version and their edited version, add the following to your \texttt{.gitconfig} file (this is very helpful in my opinion):
 
 \texttt{[merge]\\
 conflictstyle = diff3 }
-
-This is very helpful in my opinion.
 
 \subsubsection{Coloring}
 Add the following to your \texttt{.gitconfig} file to add coloring to git outputs such as \texttt{git log} or \texttt{git status}.
@@ -329,5 +331,6 @@ Add the following to your \texttt{.gitconfig} file to add coloring to git output
 If you want to learn interactively, go to \url{http://pcottle.github.io/learnGitBranching/} . Have fun :)
 
 \end{document} 
+
 
 ​
