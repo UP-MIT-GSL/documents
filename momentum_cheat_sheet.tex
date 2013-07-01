@@ -44,5 +44,88 @@
 \begin{document}
 \newpage
 \section{Angular Momentum Technology Stack}
-brew, python, pip, bundle, npm, guard, rake, vagrant
+
+Angular Momentum uses technologies like Homebrew, pip, bundle, npm, guard, rake, vagrant.
+
+\section{Homebrew}
+Homebrew installs things (in Mac). To install Homebrew, run:
+
+\texttt{ruby -e "\$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"}
+
+\subsection{Commands}
+
+\begin{itemize}
+
+\item{\texttt{install}}
+    \subitem{Install something.}
+    \subitem{Usage: \texttt{brew install wget}}
+
+\item{\texttt{uninstall}}
+    \subitem{Uninstall something.}
+    \subitem{Usage: \texttt{brew uninstall wget}}
+
+\end{itemize}
+
+For a list of things that can be installed/more info, see \url{http://mxcl.github.io/homebrew/}
+
+More tips and tricks can be found in \url{https://github.com/mxcl/homebrew/wiki/Tips-N'-Tricks}
+
+\section{pip}
+pip is an awesome Python package manager.
+
+To install pip, [TODO]
+
+For more info, visit \url{http://www.pip-installer.org/en/latest/}
+
+\subsection{Commands}
+
+\begin{itemize}
+
+\item{\texttt{install}}
+    \subitem{Install a Python package.}
+    \subitem{\texttt{==[version]} to install a specific version.}
+    \subitem{\texttt{-r} to install from a requirements file (see ``pip requirements'' below).}
+    \subitem{Usage:}
+        \subsubitem{\texttt{pip install Flask}}
+        \subsubitem{\texttt{pip install Flask==0.9}}
+        \subsubitem{\texttt{pip install -r requirements.txt}}
+
+\item{\texttt{uninstall}}
+    \subitem{Uninstall a Python package.}
+    \subitem{Usage: \texttt{pip uninstall Flask}}
+
+\item{\texttt{list}}
+    \subitem{List all installed packages.}
+    \subitem{Usage: \texttt{pip list}}
+
+\item{\texttt{freeze}}
+    \subitem{List all installed packages in requirements file format (see ``pip requirements'' below).}
+    \subitem{Usage: \texttt{pip freeze}; \texttt{pip freeze | grep Flask}}
+
+\end{itemize}
+
+\subsection{pip requirements}
+[TODO]
+
+See \texttt{backend/requirements.txt} of Angular Momentum for an example.
+
+\subsection{virtualenv}
+[TODO]
+
+\section{bundle}
+[TODO]
+
+\section{rake}
+[TODO]
+
+\section{guard}
+[TODO]
+
+\section{npm} 
+[TODO]
+
+\section{vagrant}
+[TODO]
+
 \end{document} 
+​
