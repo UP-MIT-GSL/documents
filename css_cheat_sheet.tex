@@ -199,8 +199,8 @@ a[href^=mailto] {
 \item Element \texttt{X} with an attribute \texttt{attr} value that ends in \texttt{val}
 \end{itemize}
 \begin{lstlisting}[frame=single]
-a[href^=mailto] {
-  background: url(emailicon.gif);
+a[href$=pdf]{
+  background: url(pdficon.gif);
 }
 \end{lstlisting}
 
@@ -209,8 +209,8 @@ a[href^=mailto] {
 \item Element \texttt{X} whose attribute \texttt{attr} has a value \texttt{val} that matches anywhere within the attribute 
 \end{itemize}
 \begin{lstlisting}[frame=single]
-a[href$=pdf]{
-  background: url(pdficon.gif);
+[class=*"span"] {
+  float: left;
 }
 \end{lstlisting}
 
@@ -621,17 +621,6 @@ div {
 }
 \end{lstlisting}
 
-\item \texttt{rgba(R, G, B, opacity)}
-\begin{itemize}
-\item A function for setting a color with transparency
-\item Used with \texttt{color} and \text{bacgkround-color}
-\end{itemize}
-\begin{lstlisting}[frame=single]
-div {
-  color: rgba(10, 10, 15, 0.75);
-}
-\end{lstlisting}
-
 \item \texttt{linear-gradient}
 \begin{itemize}
 \item A function that creates an image with a linear gradient
@@ -758,7 +747,7 @@ h1{
 \item \texttt{transition}
 \begin{itemize}
 \item Makes an element gradually change styles to give an animated effect
-\item Accept sa comma-separate list of property names and duration.
+\item Accepts a comma-separate list of property names and duration.
 \item The transition takes effect when a property value is changed.  You can use it to make fancier hover effects for example, by changing the color with a smooth transition when the mouse is over an \texttt{a} element.
 \item There are a lot more options you can pass for complex effect such as \texttt{linear}, \texttt{cubiz-bezier}, \texttt{ease}, etc.  Look it up online.
 \item Compatability: IE10
@@ -805,8 +794,8 @@ body
 
 \item Mixins
 \begin{itemize}
-\item A reusable block of code you can insert anywhere within scope
-\item When a mixin is invoked within a selector, the properties defined are copied into the selector on compilation
+\item A reusable block of code you can insert anywhere in your stylesheet
+\item When a mixin is invoked within a selector, the properties are copied into the selector on compilation
 \item Use mixins to avoid typing out all the vendor prefixes of CSS3 properties
 \end{itemize}
 \begin{lstlisting}[frame=single]
@@ -850,7 +839,6 @@ invert(#d62828)
 \end{description}
 
 \item Operators
-\subitem{In order of descending operator precedence}
 \begin{lstlisting}[frame=single]
 15px - 5px
 // => 10px
