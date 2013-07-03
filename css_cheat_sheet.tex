@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[10pt, twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -134,7 +134,7 @@ Note: assume compatible with IE6+, Firefox, Chrome, Safari and Opera unless spec
   a[href="foo"] {
     color: black;
   }
-  #my-id[disabled] {
+  #my-id[title] {
     color: gray;
   }
   \end{lstlisting}
@@ -184,10 +184,80 @@ Note: assume compatible with IE6+, Firefox, Chrome, Safari and Opera unless spec
     \item Compatability: IE9+
   \end{itemize}
 
+\item \texttt{X[attr\^{}=val]}
+\begin{itemize}
+\item Element \texttt{X} with an attribute \texttt{attr} value that starts in \texttt{val}
+\end{itemize}
+\begin{lstlisting}[frame=single]
+a[href^=mailto] {
+  background: url(emailicon.gif);
+}
+\end{lstlisting}
+
+\item \texttt{X[attr\$=val]}
+\begin{itemize}
+\item Element \texttt{X} with an attribute \texttt{attr} value that ends in \texttt{val}
+\end{itemize}
+\begin{lstlisting}[frame=single]
+a[href^=mailto] {
+  background: url(emailicon.gif);
+}
+\end{lstlisting}
+
+\item \texttt{X[attr*=val]}
+\begin{itemize}
+\item Element \texttt{X} whose attribute \texttt{attr} has a value \texttt{val} that matches anywhere within the attribute 
+\end{itemize}
+\begin{lstlisting}[frame=single]
+a[href$=pdf]{
+  background: url(pdficon.gif);
+}
+\end{lstlisting}
+
+\item \texttt{X:enabled}, \texttt{X:disabled}, \texttt{X:checked} 
+\begin{itemize}
+\item Style based on the current state of \texttt{X}  
+\end{itemize}
+\begin{lstlisting}[frame=single]
+input[type="checkbox"]:checked {
+  color: red;
+}
+\end{lstlisting}
+
+\item \texttt{X:nth-child(n)} 
+\begin{itemize}
+\item Target element X that is the nth child of its parent
+\item The parameter \texttt{n} accepts an integer
+\item If you want to target a variable number of children, you can pass an argument of the form \texttt{an+b}
+\item You can also use \texttt{even} and \texttt{odd} as arguments to target even and odd child elements
+\item Compatability: IE9+, Firefox 3.5+
+\end{itemize}
+\begin{lstlisting}[frame=single]
+li:nth-child(3) {
+  color: red;
+}
+li:nth-child(2n+1) {
+  color: red;
+}
+li:nth-child(odd) {
+  color: red;
+}
+\end{lstlisting}
+
+\item \texttt{X::first-letter} 
+\begin{itemize}
+\item Targets the first letter of a body of text
+\item Can only be applied to block level elements
+\end{itemize}
+\begin{lstlisting}[frame=single]
+p::first-letter {
+  font-weight: bold;
+}
+\end{lstlisting}
 
 \end{enumerate}
 
-\section{CSS Cheat Sheet}
+\section{CSS}
 \begin{enumerate}
 
 \item{\texttt{color}}  
@@ -358,7 +428,7 @@ img {
 
 \item{\texttt{clear}}
 \begin{itemize}
-    \item Specifying this will tell the browser not to allow any floated elements to the left or right of the cleared element.
+    \item Speciying this will tell the browser not to allow any floated elements to the left or right of the cleared element.
 \end{itemize}    
 \begin{lstlisting}[frame=single]
 p {
@@ -400,7 +470,6 @@ p {
   .span2
     // more content
 \end{lstlisting}
-\item If you want a smaller grid, don't total 12, it's perfectly all right.
 \item Also you can nest columns
 \begin{lstlisting}[frame=single]
 .row
@@ -504,18 +573,324 @@ button.btn.btn-primary Click me!
 \end{itemize}
 \begin{lstlisting}[frame=single]
 button.btn.btn-large I'm a big button
-button.btn.btn-danger.btn-mini I'm a teeny dangerous button rawr
+button.btn.btn-danger.btn-mini Clear
 \end{lstlisting}
 
-\item \texttt{disabled}
-\begin{itemize}
-\item Add the disabled attribute to the button to make it unclickable and uninviting (It will look washed out and tired and weak).
-\end{itemize}
-\begin{lstlisting}[frame=single]
-button.btn(disabled) No you can't have nice things
-\end{lstlisting}
 
 \end{enumerate}
+
+\end{enumerate}
+
+\section{CSS3 Properties}
+\begin{enumerate}
+
+\item \texttt{border-radius}
+\begin{itemize}
+\item Makes rounded corners
+\item Commonly used with \texttt{px} and \texttt{\%}
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+\end{lstlisting}
+
+\item \texttt{opacity}
+\begin{itemize}
+\item Adjusts the transparency of an element 
+\item Accepts a unitless number from 0 to 1, 0 makes the element completely transparent and 1 makes it completey opaque
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  opacity: 0.5;
+}
+\end{lstlisting}
+
+\item \texttt{rgba(R, G, B, opacity)}
+\begin{itemize}
+\item A function for setting a color with transparency
+\item Used with \texttt{color} and \text{bacgkround-color}
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  color: rgba(10, 10, 15, 0.75);
+}
+\end{lstlisting}
+
+\item \texttt{rgba(R, G, B, opacity)}
+\begin{itemize}
+\item A function for setting a color with transparency
+\item Used with \texttt{color} and \text{bacgkround-color}
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  color: rgba(10, 10, 15, 0.75);
+}
+\end{lstlisting}
+
+\item \texttt{linear-gradient}
+\begin{itemize}
+\item A function that creates an image with a linear gradient
+\item Applied to \texttt{background-image}
+\item Gradients are tricky and accept a variable number of parameters, I will give an example of a top to bottom gradient below. If you wish to create more complicated images, approach Cassie the TA.
+\item You can make lots of complex patterns with gradients, check out http://lea.verou.me/css3patterns/ for awesome examples.
+\item Note: If your gradient rules become too long and increase the file size of your stylesheet, might as well use a separate SVG or PNG file.
+\item The browser support of the gradient function depends on which syntax you pick, let's just say you can support IE6+ if you use all of the vendor prefixes below. (Is it worth it?)
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  /* FF 3.6+ */  
+  background-image: 
+    -moz-linear-gradient(black, white); 
+  /* Safari 4+, Chrome 2+ */  
+  background-image: 
+    -webkit-gradient(linear, 
+    left top, left bottom, 
+    color-stop(0%, #000000), 
+    color-stop(100%, #ffffff));
+  /* Safari 5.1+, Chrome 10+ */   
+  background-image: 
+    -webkit-linear-gradient(black, white); 
+  /* Opera 11.10 */  
+  background-image: 
+    -o-linear-gradient(black, white);
+  /* IE6 & IE7 */  
+  filter: progid:DXImageTransform.
+    Microsoft.gradient(startColorstr=
+    '#000000', endColorstr='#ffffff');  
+  /* IE8+ */ 
+  -ms-filter: "progid:DXImageTransform.
+    Microsoft.gradient(startColorstr=
+    '#000000', endColorstr='#ffffff')";  
+  background-image: 
+    linear-gradient(black, white);
+}
+\end{lstlisting}
+
+\item \texttt{radial-gradient}
+\begin{itemize}
+\item A function that creates an image with a radial gradient
+\item Applied to \texttt{background-image}
+\item Compatability: IE10, Firefox 3.6+
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  /* Safari 4-5, Chrome 1-9 */
+  background-image: 
+    -webkit-gradient(radial, 
+    center center, 0,
+    center center, 460, 
+    from(#1a82f7), to(#2F2727)); 
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: 
+    -webkit-radial-gradient(circle, 
+    #1a82f7, #2F2727);
+  /* Firefox 3.6+ */ 
+  background-image: 
+    -moz-radial-gradient(circle, 
+    #1a82f7, #2F2727);
+  /* IE 10 */ 
+  background-image: 
+    -ms-radial-gradient(circle, 
+    #1a82f7, #2F2727);
+}
+\end{lstlisting}
+
+\item \texttt{box-shadow}
+\begin{itemize}
+\item Creates a shadow around or inside your element
+\item Syntax:
+\begin{lstlisting}[frame=single]
+box-shadow: 
+    h-shadow v-shadow blur spread color inset;
+\end{lstlisting}
+\begin{description}
+\item[\texttt{h-shadow}] Required.  The horizontal position of the shadow
+\item[\texttt{v-shadow}] Required.  The vertical position of the shadow
+\item[\texttt{blur}] Optional.  The blur distance
+\item[\texttt{spread}] Optional.  The size of the shadow
+\item[\texttt{color}] Optional.  The color of the shadow
+\item[\texttt{inset}] Optional.  Make the shadow an inner shadow
+\end{description}
+\item \texttt{box-shadow} accepts a comma separated list of shadow definitions so an element can have more than one shadow
+\item Compatability: IE9+
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  box-shadow: 10px 10px 5px #888888;
+}
+div {
+  box-shadow: 10px 10px 5px #888888 inset;
+}
+div {
+  box-shadow: 10px 10px 5px #888888, 
+    10px 10px 5px #888888 inset;
+}
+\end{lstlisting}
+
+\item \texttt{text-shadow}
+\begin{itemize}
+\item Creates a shadow for your text
+\item Syntax:
+\begin{lstlisting}[frame=single]
+text-shadow: 
+    h-shadow v-shadow 
+    blur color;
+\end{lstlisting}
+\begin{description}
+\item[\texttt{h-shadow}] Required.  The horizontal position of the shadow
+\item[\texttt{v-shadow}] Required.  The vertical position of the shadow
+\item[\texttt{blur}] Optional.  The blur distance
+\item[\texttt{color}] Optional.  The color of the shadow
+\end{description}
+\item \texttt{text-shadow} accepts a comma separated list of shadow definitions so an element can have more than one shadow
+\item Compatability: IE10
+\end{itemize}
+\begin{lstlisting}[frame=single]
+h1{
+  text-shadow: 2px 2px #ff0000;
+}
+\end{lstlisting}
+\item \texttt{transition}
+\begin{itemize}
+\item Makes an element gradually change styles to give an animated effect
+\item Accept sa comma-separate list of property names and duration.
+\item The transition takes effect when a property value is changed.  You can use it to make fancier hover effects for example, by changing the color with a smooth transition when the mouse is over an \texttt{a} element.
+\item There are a lot more options you can pass for complex effect such as \texttt{linear}, \texttt{cubiz-bezier}, \texttt{ease}, etc.  Look it up online.
+\item Compatability: IE10
+\end{itemize}
+\begin{lstlisting}[frame=single]
+div {
+  transition: width 2s, height 2s,
+    transform 2s;
+  -webkit-transition: width 2s, height 2s, 
+    -webkit-transform 2s;
+}
+div {
+  transition: color 1s linear 2s;
+  -webkit-transition:width 1s linear 2s;
+}
+\end{lstlisting}
+\end{enumerate}
+
+\section{Stylus}
+\begin{enumerate}
+
+\item Variables
+\begin{itemize}
+\item Assign values to variables and use them anywhere within scope
+\end{itemize}
+\begin{lstlisting}[frame=single]
+font-size = 14px
+
+body
+ font font-size Arial, sans-serif
+\end{lstlisting}
+
+\item Property Lookup
+\begin{itemize}
+\item Append teh \texttt{@} symbol to a valid property name to access the value
+\end{itemize}
+\begin{lstlisting}[frame=single]
+#logo
+   width: 150px
+   height: 80px
+   margin-left: -(@width / 2)
+   margin-top: -(@height / 2)
+\end{lstlisting}
+
+\item Mixins
+\begin{itemize}
+\item A reusable block of code you can insert anywhere within scope
+\item When a mixin is invoked within a selector, the properties defined are copied into the selector on compilation
+\item Use mixins to avoid typing out all the vendor prefixes of CSS3 properties
+\end{itemize}
+\begin{lstlisting}[frame=single]
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+form input[type=button]
+  border-radius(5px)
+
+div
+  border-radius(10px)    
+\end{lstlisting}
+
+\item Some Built-in Functions
+\begin{description}
+\item[\texttt{lighten(color, amount)}] Lighten the \texttt{color} by the given \texttt{amount}
+\begin{lstlisting}[frame=single]
+lighten(#2c2c2c, 30)
+// => #787878
+
+lighten(#2c2c2c, 30%)
+// => #393939 
+\end{lstlisting}
+
+\item[\texttt{darken(color, amount)}] Darken the \texttt{color} by the given \texttt{amount}
+\begin{lstlisting}[frame=single]
+darken(#D62828, 30)
+// => #551010
+
+darken(#D62828, 30%)
+// => #961c1c
+\end{lstlisting}
+
+\item[\texttt{invert{color}}] Inverts the red, green and blue valus of \texttt{color}, opacity is ignored
+\begin{lstlisting}[frame=single]
+invert(#d62828)
+// => #29d7d7
+\end{lstlisting}
+\end{description}
+
+\item Operators
+\subitem{In order of descending operator precedence}
+\begin{lstlisting}[frame=single]
+15px - 5px
+// => 10px
+
+"num " + 15
+// => "num 15"
+
+2000ms + (1s * 2)
+// => 4000ms
+
+5s / 2
+// => 2.5s
+
+4 % 2
+// => 0
+
+2 ** 8
+// => 256
+
+5 == 5
+// => true
+
+10 > 5
+// => true
+
+#fff == #fff
+// => true
+\end{lstlisting}
+
+\item Conditionals \texttt{if} / \texttt{else if} / \texttt{else}
+\begin{itemize}
+\item The \texttt{if} executes the following block if the expression is true.  The \texttt{else if} and \texttt{else} conditions can be used as fallbacks. 
+\end{itemize}
+\begin{lstlisting}[frame=single]
+box(x, y, margin-only)
+  if margin-only
+    margin y x
+  else
+    padding y x
+\end{lstlisting}
 
 \end{enumerate}
 
