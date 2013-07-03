@@ -838,6 +838,19 @@ invert(#d62828)
 \end{description}
 
 \item Operators
+\begin{description}
+\item[\texttt{+}] Addition and concatenation
+\item[\texttt{-}] Subtraction
+\item[\texttt{*}] Multipliciation
+\item[\texttt{/}] Division
+\item[\texttt{\%}] Modulo
+\item[\texttt{!}, \texttt{not}] Negation
+\item[\texttt{>}, \texttt{>=}] Greater than, greater than or equal to
+\item[\texttt{<}, \texttt{<=}] Less than, less than or equal to
+\item[\texttt{==}, is] Check for equivalence
+\item[\texttt{&&}, \texttt{and}] AND
+\item[\texttt{||}, \texttt{or}] OR
+\end{description}
 \begin{lstlisting}[frame=single]
 15px - 5px
 // => 10px
@@ -865,6 +878,34 @@ invert(#d62828)
 
 #fff == #fff
 // => true
+
+!0
+// => true
+
+!!0
+// => false
+
+!1
+// => false
+
+!!5px
+// => true
+
+-5px
+// => -5px
+
+--5px
+// => 5px
+
+not true
+// => false
+
+not not true
+// => true
+
+not a or b
+// => false
+// parsed as: not (a or b)
 \end{lstlisting}
 
 \item Conditionals \texttt{if} / \texttt{else if} / \texttt{else}
@@ -872,11 +913,13 @@ invert(#d62828)
 \item The \texttt{if} executes the following block if the expression is true.  The \texttt{else if} and \texttt{else} conditions can be used as fallbacks. 
 \end{itemize}
 \begin{lstlisting}[frame=single]
-box(x, y, margin-only)
-  if margin-only
+box(x, y, margin = false)
+  padding y x
+  if margin
     margin y x
-  else
-    padding y x
+
+body
+  box(5px, 10px, true)
 \end{lstlisting}
 
 \end{enumerate}
