@@ -43,12 +43,81 @@
 }
 \begin{document}
 \newpage
-\section{JavaScript/CoffeeScript}
+\section{JavaScript and CoffeeScript}
+CoffeeScript is a language that compiles to JavaScript.
 
-Useful CoffeeScript conveniences
-also, refer to coffeescript.org
-jQuery
-JSON (also mention XML, and that it sucks)
+For more info, see \url{coffeescript.org}.
+
+[TODO Useful CoffeeScript conveniences]
+
+\section{jQuery}
+jQuery is an awesome JavaScript library.
+
+For more info, see \url{api.jquery.com} and \url{oscarotero.com/jquery}.
+
+[TODO jQuery stuff]
+
+\section{JSON}
+JSON (JavaScript Object Notation) is an awesome text-based human-readable data interchange format. XML is another such format, but it's bloated and ugly.
+
+In Angular Momentum, JSON is the format used when the frontend communicates with the backend, and when the backend responds.
+
+For example, the frontend might issue a request to create a new message like:
+\begin{verbatim}
+{
+    "id": null,
+    "message": "Hello world!"
+}
+\end{verbatim}
+
+And the backend might reply as:
+\begin{verbatim}
+{
+    "ok": true,
+    "message": {
+        "id": 123,
+        "message": "Hello world!",
+        "created_at": "2011-11-11 11:11:11"
+    }
+}
+\end{verbatim}
+
+
+
+For more info, see \url{json.org}.
+
+\subsection{The JSON format}
+A \texttt{JSON value} is one of the following:
+\begin{itemize}
+\item{\texttt{null}}
+    \subitem{Represents nothingness.}
+
+\item{\texttt{Boolean}}
+    \subitem{Represents a boolean value (\texttt{true} or \texttt{false}).}
+
+\item{\texttt{Number}}
+    \subitem{Represents a number (integer or floating point format).}
+    \subitem{Examples: \texttt{11}; \texttt{-123.456}; \texttt{6.02e23}}
+
+\item{\texttt{String}}
+    \subitem{Represents a string, delimited by double quotes (`` '').}
+    \subitem{Escape quotes (and other special characters) using backslash (\textbackslash).}
+    \subitem{Example: \texttt{"Hey\textbackslash nMy name is \textbackslash"John\textbackslash""}}
+
+\item{\texttt{Array}}
+    \subitem{Represents an ordered collection of values.}
+    \subitem{Each element can be any \texttt{JSON value}.}
+    \subitem{The elements are comma-separated (trailing comma not allowed) and can be empty.}
+    \subitem{Example: \texttt{[true, 5, "John", [null, "Hey"], []]}}
+
+\item{\texttt{Object}}
+    \subitem{Represents an ordered set of name/value pairs.}
+    \subitem{Each key must be a \texttt{String}. Each value can be any \texttt{JSON value}.}
+    \subitem{Keys must be distinct.}
+    \subitem{The key/value pairs are comma-separated (trailing comma not allowed) and can be empty.}
+    \subitem{Example: \texttt{\{"a": 1, "b": "c", "hey": [1, 2, 3, \{\}]\}}}
+
+\end{itemize}
 
 \end{document}
 
