@@ -748,7 +748,7 @@ h1{
 \item Makes an element gradually change styles to give an animated effect
 \item Accepts a comma-separate list of property names and duration.
 \item The transition takes effect when a property value is changed.  You can use it to make fancier hover effects for example, by changing the color with a smooth transition when the mouse is over an \texttt{a} element.
-\item There are a lot more options you can pass for complex effect such as \texttt{linear}, \texttt{cubiz-bezier}, \texttt{ease}, etc.  Look it up online.
+\item There are a lot more options you can pass for complex effect such as \texttt{linear}, \texttt{cubic-bezier}, \texttt{ease}, etc.  Look it up online.
 \item Compatability: IE10
 \end{itemize}
 \begin{lstlisting}[frame=single]
@@ -781,7 +781,7 @@ body
 
 \item Property Lookup
 \begin{itemize}
-\item Append teh \texttt{@} symbol to a valid property name to access the value
+\item Append the \texttt{@} symbol to a valid property name to access the value
 \end{itemize}
 \begin{lstlisting}[frame=single]
 #logo
@@ -830,7 +830,7 @@ darken(#D62828, 30%)
 // => #961c1c
 \end{lstlisting}
 
-\item[\texttt{invert{color}}] Inverts the red, green and blue valus of \texttt{color}, opacity is ignored
+\item[\texttt{invert(color)}] Inverts the red, green and blue values of \texttt{color}, opacity is ignored
 \begin{lstlisting}[frame=single]
 invert(#d62828)
 // => #29d7d7
@@ -841,7 +841,7 @@ invert(#d62828)
 \begin{description}
 \item[\texttt{+}] Addition and concatenation
 \item[\texttt{-}] Subtraction
-\item[\texttt{*}] Multipliciation
+\item[\texttt{*}] Multiplication
 \item[\texttt{/}] Division
 \item[\texttt{\%}] Modulo
 \item[\texttt{!}, \texttt{not}] Negation
