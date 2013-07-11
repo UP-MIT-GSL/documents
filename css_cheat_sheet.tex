@@ -770,7 +770,7 @@ div {
 
 \item Variables
 \begin{itemize}
-\item Assign values to variables and use them anywhere within scope
+\item The example below shows how to assign a value to a variable and how to use that variable.
 \end{itemize}
 \begin{lstlisting}[frame=single]
 font-size = 14px
@@ -814,18 +814,12 @@ div
 \begin{description}
 \item[\texttt{lighten(color, amount)}] Lighten the \texttt{color} by the given \texttt{amount}
 \begin{lstlisting}[frame=single]
-lighten(#2c2c2c, 30)
-// => #787878
-
 lighten(#2c2c2c, 30%)
 // => #393939 
 \end{lstlisting}
 
 \item[\texttt{darken(color, amount)}] Darken the \texttt{color} by the given \texttt{amount}
 \begin{lstlisting}[frame=single]
-darken(#D62828, 30)
-// => #551010
-
 darken(#D62828, 30%)
 // => #961c1c
 \end{lstlisting}
@@ -910,13 +904,15 @@ not a or b
 
 \item Conditionals \texttt{if} / \texttt{else if} / \texttt{else}
 \begin{itemize}
-\item The \texttt{if} executes the following block if the expression is true.  The \texttt{else if} and \texttt{else} conditions can be used as fallbacks. 
+\item The example below shows how to use an \texttt{if} statement to conditionally apply styles.
 \end{itemize}
 \begin{lstlisting}[frame=single]
 box(x, y, margin = false)
   padding y x
   if margin
     margin y x
+  else
+    margin 0
 
 body
   box(5px, 10px, true)
